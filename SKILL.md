@@ -11,12 +11,18 @@ Génère des design tokens fluides basés sur la méthode Utopia (`clamp()`).
 Produit des échelles typographiques (type scale) et d'espacement (space scale)
 qui s'adaptent fluidement entre deux largeurs d'écran.
 
+Nouveautés v2 :
+- **Crossover pairs** — valeurs fluides entre deux steps adjacents
+- **Labels sémantiques** — `--text-xs`, `--text-m`, `--h1`, etc.
+- **Section spacing** — échelle d'espacement dédiée aux sections
+- **Gutter fluide** — marge latérale responsive
+- **Content width** — largeur max du conteneur
+
 Trois entrées possibles :
 
 - **Assistant interactif** — L'agent pose les questions à l'utilisateur une par une
 - **Via config file** — L'agent construit un fichier JSON de configuration et exécute le script
-- **Bibliothèque d'exemples** — L'agent peut montrer des pages existantes à l'utilisateur pour
-  l'inspirer avant de générer son propre design system
+- **Bibliothèque d'exemples** — L'agent peut montrer des pages existantes à l'utilisateur pour l'inspirer avant de générer son propre design system
 
 ## Ressources
 
@@ -77,11 +83,9 @@ Quelle échelle typographique souhaitez-vous utiliser ?
 Ou entrez une valeur numérique personnalisée (ex: 1.15, 1.35).
 ```
 
-L'utilisateur peut aussi donner directement une valeur comme `1.2` au lieu
-d'un nom. Le script `resolveScale()` dans `generate-tokens.mjs` gère les deux.
+L'utilisateur peut aussi donner directement une valeur comme `1.2` au lieu d'un nom. Le script `resolveScale()` dans `generate-tokens.mjs` gère les deux.
 
-**Conseil** : Si l'utilisateur hésite, recommander `perfect-fourth` (1.333)
-pour un site moderne ou `minor-third` (1.2) pour une application de texte.
+**Conseil** : Si l'utilisateur hésite, recommander `perfect-fourth` (1.333) pour un site moderne ou `minor-third` (1.2) pour une application de texte.
 
 ### 2. Demander les autres paramètres
 
@@ -96,6 +100,9 @@ Après l'échelle, poser les questions suivantes (avec valeurs par défaut) :
 | Pas négatifs | 2 | Combien de pas en dessous de la base ? |
 | Pas positifs | 5 | Combien de pas au-dessus de la base ? |
 | Space scale | Oui | Générer une échelle d'espacement ? |
+| Section space | Oui | Générer une échelle d'espacement sections ? |
+| Gutter | Oui | Générer une marge latérale fluide ? |
+| Content width | Oui | Générer une largeur max de conteneur fluide ? |
 | Format | CSS | CSS / Tailwind / SCSS / JSON ? |
 
 ### 3. Exécuter le script
@@ -104,6 +111,33 @@ Construire le fichier de configuration JSON et lancer :
 
 ```bash
 node {skill-root}/scripts/generate-tokens.mjs config.json
+```
+
+Configuration complète (toutes les fonctionnalités) :
+
+```json
+{
+  "type": {
+    "minTypeScale": "perfect-fourth",
+    "maxTypeScale": 1.333,
+    "minFontSize": 16,
+    "maxFontSize": 20,
+    "negativeSteps": 2,
+    "positiveSteps": 5,
+    "minWidth": 375,
+    "maxWidth": 1440
+  },
+  "space": {
+    "minSize": 8,
+    "maxSize": 12,
+    "positiveSteps": [1.5, 2, 3, 4, 6],
+    "negativeSteps": [0.5, 0.75]
+  },
+  "sectionSpace": {},
+  "gutter": { "minGutter": 16, "maxGutter": 80 },
+  "contentWidth": { "minContent": 640, "maxContent": 1152 },
+  "format": "css"
+}
 ```
 
 ### 4. Écrire les tokens dans le projet
@@ -117,8 +151,7 @@ Selon le format choisi :
 
 ### 5. Auto-amélioration — ajouter à la bibliothèque
 
-Après avoir généré un design system, vérifier si une page d'exemple avec
-cette configuration exacte existe déjà dans `references/examples/index.md`.
+Après avoir généré un design system, vérifier si une page d'exemple avec cette configuration exacte existe déjà dans `references/examples/index.md`.
 
 **Si elle n'existe pas**, demander à l'utilisateur :
 
@@ -152,10 +185,7 @@ Si l'utilisateur accepte (option 1) :
    | [{Name}](./examples/{name}.html) | {scale-name} | {ratio} | {minFS}→{maxFS} px | {steps} | {theme} |
    ```
 
-> **Note d'implémentation** : La page peut être générée en modifiant le
-> template d'une page existante (copier le HTML, remplacer les tokens dans
-> `:root` et les métadonnées). Le script `generate-tokens.mjs` en mode JSON
-> fournit toutes les données nécessaires.
+> **Note d'implémentation** : La page peut être générée en modifiant le template d'une page existante (copier le HTML, remplacer les tokens dans `:root` et les métadonnées). Le script `generate-tokens.mjs` en mode JSON fournit toutes les données nécessaires.
 
 ## Utilisation programmatique
 
@@ -188,13 +218,17 @@ steps.forEach(step => {
 | `calculateClamps(opts)` | Calcule plusieurs clamps depuis des paires |
 | `calculateTypeScale(config)` | Calcule une échelle typographique complète |
 | `calculateSpaceScale(config)` | Calcule une échelle d'espacement complète |
+| `calculateSectionSpaceScale(config)` | Calcule une échelle d'espacement sections |
+| `calculateTypeCrossoverPairs(steps)` | Génère les paires de transition entre steps |
+| `calculateTextLabels(steps)` | Génère les alias sémantiques --text-* |
+| `calculateHeadingLabels(steps)` | Génère les alias sémantiques --h1..h6 |
+| `calculateGutter(config)` | Calcule une marge latérale fluide |
+| `calculateContentWidth(config)` | Calcule une largeur max de conteneur fluide |
 | `checkWCAG(opts)` | Vérifie la conformité WCAG 1.4.4 |
 
 ## Échelles musicales (scales.json)
 
-Le fichier `scripts/scales.json` contient toutes les échelles nommées avec
-leur valeur, description et catégorie. L'agent peut le lire pour présenter
-les options à l'utilisateur.
+Le fichier `scripts/scales.json` contient toutes les échelles nommées avec leur valeur, description et catégorie. L'agent peut le lire pour présenter les options à l'utilisateur.
 
 ```js
 const scales = JSON.parse(fs.readFileSync('{skill-root}/scripts/scales.json'));
@@ -202,30 +236,41 @@ const scales = JSON.parse(fs.readFileSync('{skill-root}/scripts/scales.json'));
 
 ## Formats de sortie
 
-### CSS (`--font-size-*`, `--space-*`)
+### CSS Custom Properties
 ```css
 :root {
   --font-size-0: clamp(1.00rem, 0.83rem + 0.87vw, 1.50rem);
+  --text-m: clamp(1.00rem, 0.83rem + 0.87vw, 1.50rem);
+  --h1: clamp(2.89rem, 2.39rem + 1.53vw, 4.21rem);
   --space-m: clamp(1.00rem, 0.83rem + 0.87vw, 1.50rem);
+  --section-space-xl: clamp(2.00rem, 1.65rem + 1.74vw, 3.00rem);
+  --gutter: clamp(1.00rem, -0.41rem + 6.01vw, 5.00rem);
+  --content-width: clamp(40rem, 28.73rem + 48.08vw, 72rem);
 }
 ```
 
-### Tailwind (`theme.extend`)
+### Tailwind Config
 ```js
-fontSize: { 'base': 'clamp(...)' },
-spacing: { 'm': 'clamp(...)' }
+fontSize: { 'm': 'clamp(...)', 'xl': 'clamp(...)' },
+spacing: { 'm': 'clamp(...)', 'section-xl': 'clamp(...)', 'gutter': 'clamp(...)' }
 ```
 
-### SCSS (`$font-size-*`, `$space-*`)
+### SCSS Variables
 ```scss
 $font-size-0: clamp(1.00rem, 0.83rem + 0.87vw, 1.50rem);
 $space-m: clamp(1.00rem, 0.83rem + 0.87vw, 1.50rem);
+$section-space-xl: clamp(2.00rem, 1.65rem + 1.74vw, 3.00rem);
 ```
 
 ### JSON (données structurées)
 ```json
 {
   "typeSteps": [{ "step": 0, "label": "0", "clamp": "..." }],
-  "spaceScale": { "sizes": [...], "oneUpPairs": [...], "customPairs": [...] }
+  "spaceScale": { "sizes": [...], "oneUpPairs": [...], "customPairs": [...] },
+  "sectionSpace": { "sizes": [...], "oneUpPairs": [...] },
+  "textLabels": [{ "label": "m", "clamp": "..." }],
+  "headingLabels": [{ "label": "h1", "clamp": "..." }],
+  "gutter": { "label": "gutter", "clamp": "..." },
+  "contentWidth": { "label": "content-width", "clamp": "..." }
 }
 ```

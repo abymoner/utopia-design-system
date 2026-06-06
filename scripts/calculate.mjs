@@ -71,6 +71,31 @@
  * @property {string} clampPx
  */
 
+/**
+ * @typedef {Object} SectionSpaceConfig
+ * @property {number} minWidth
+ * @property {number} maxWidth
+ * @property {number} minSize
+ * @property {number} maxSize
+ * @property {number[]} [negativeSteps]
+ * @property {number[]} [positiveSteps]
+ * @property {RelativeTo} [relativeTo]
+ */
+
+/**
+ * @typedef {Object} FluidProperty
+ * @property {string} label
+ * @property {string} clamp
+ */
+
+/**
+ * @typedef {Object} CrossoverPair
+ * @property {string} label
+ * @property {number} minSize
+ * @property {number} maxSize
+ * @property {string} clamp
+ */
+
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 const lerp = (x, y, a) => x * (1 - a) + y * a;
@@ -259,19 +284,35 @@ export function calculateTypeScale(config) {
   ];
 }
 
+// ─── Space Label Helpers ──────────────────────────────────────────────────────
+
+const SPACE_LABELS = [
+  { max: 0.125, label: '3xs' },
+  { max: 0.25, label: '2xs' },
+  { max: 0.5, label: 'xs' },
+  { max: 0.75, label: 's' },
+  { max: 1, label: 'm' },
+  { max: 1.5, label: 'l' },
+  { max: 2, label: 'xl' },
+  { max: 3, label: '2xl' },
+  { max: 4, label: '3xl' },
+  { max: 6, label: '4xl' },
+  { max: Infinity, label: '5xl' }
+];
+
+function spaceLabel(multiplier) {
+  for (const entry of SPACE_LABELS) {
+    if (multiplier <= entry.max) return entry.label;
+  }
+  return String(Math.round(multiplier));
+}
+
 // ─── Space Scale ────────────────────────────────────────────────────────────────
 
-function calcSpaceSize(config, multiplier, step) {
+function calcSpaceSize(config, multiplier) {
   const minSize = Math.round(config.minSize * multiplier);
   const maxSize = Math.round(config.maxSize * multiplier);
-
-  let label = 's';
-  if (step === 1) label = 'm';
-  else if (step === 2) label = 'l';
-  else if (step === 3) label = 'xl';
-  else if (step > 3) label = `${step - 2}xl`;
-  else if (step === -1) label = 'xs';
-  else if (step < -1) label = `${Math.abs(step)}xs`;
+  const label = spaceLabel(multiplier);
 
   return {
     label,
@@ -351,14 +392,14 @@ function calcCustomPairs(config, sizes) {
  */
 export function calculateSpaceScale(config) {
   const positiveSteps = [...(config.positiveSteps || [])].sort(sortAsc)
-    .map((multiplier, i) => calcSpaceSize(config, multiplier, i + 1)).reverse();
+    .map(multiplier => calcSpaceSize(config, multiplier)).reverse();
 
   const negativeSteps = [...(config.negativeSteps || [])].sort(sortAsc).reverse()
-    .map((multiplier, i) => calcSpaceSize(config, multiplier, -1 * (i + 1)));
+    .map(multiplier => calcSpaceSize(config, multiplier));
 
   const sizes = [
     ...positiveSteps,
-    calcSpaceSize(config, 1, 0),
+    calcSpaceSize(config, 1),
     ...negativeSteps
   ];
 
@@ -366,5 +407,175 @@ export function calculateSpaceScale(config) {
     sizes,
     oneUpPairs: calcOneUpPairs(config, sizes),
     customPairs: calcCustomPairs(config, sizes)
+  };
+}
+
+// ─── Section Space Scale ───────────────────────────────────────────────────────
+
+const DEFAULT_SECTION_MULTIPLIERS = [1.5, 2, 3, 4, 6];
+const DEFAULT_SECTION_NEGATIVE = [0.5, 0.75];
+
+/**
+ * Calculate a fluid section space scale (for padding/margin of sections).
+ * Reuses space math with larger default multipliers.
+ * @param {SectionSpaceConfig} config
+ * @returns {SpaceScale}
+ */
+export function calculateSectionSpaceScale(config) {
+  return calculateSpaceScale({
+    ...config,
+    positiveSteps: config.positiveSteps || DEFAULT_SECTION_MULTIPLIERS,
+    negativeSteps: config.negativeSteps || DEFAULT_SECTION_NEGATIVE
+  });
+}
+
+// ─── Type Crossover Pairs ─────────────────────────────────────────────────────
+
+/**
+ * Generate crossover pairs between adjacent type steps.
+ * Each pair creates a fluid value between two steps.
+ * @param {Step[]} steps  — sorted largest to smallest
+ * @param {number} minWidth
+ * @param {number} maxWidth
+ * @param {RelativeTo} [relativeTo]
+ * @returns {CrossoverPair[]}
+ */
+export function calculateTypeCrossoverPairs(steps, minWidth, maxWidth, relativeTo) {
+  const pairs = [];
+  for (let i = 0; i < steps.length - 1; i++) {
+    const a = steps[i];
+    const b = steps[i + 1];
+    pairs.push({
+      label: `${a.label}-to-${b.label}`,
+      minSize: Math.min(a.minFontSize, b.minFontSize),
+      maxSize: Math.max(a.maxFontSize, b.maxFontSize),
+      clamp: calculateClamp({
+        minSize: Math.min(a.minFontSize, b.minFontSize),
+        maxSize: Math.max(a.maxFontSize, b.maxFontSize),
+        minWidth, maxWidth, relativeTo
+      })
+    });
+  }
+  return pairs;
+}
+
+// ─── Semantic Type Aliases ─────────────────────────────────────────────────────
+
+const TEXT_LABEL_MAP = [
+  { step: -2, label: 'xs' },
+  { step: -1, label: 's' },
+  { step: 0, label: 'm' },
+  { step: 1, label: 'l' },
+  { step: 2, label: 'xl' },
+  { step: 3, label: 'xxl' }
+];
+
+const HEADING_LABEL_MAP = [
+  { step: -1, label: 'h6' },
+  { step: 0, label: 'h5' },
+  { step: 1, label: 'h4' },
+  { step: 2, label: 'h3' },
+  { step: 3, label: 'h2' },
+  { step: 4, label: 'h1' }
+];
+
+/**
+ * Generate semantic text size aliases from type scale steps.
+ * Maps steps to --text-{xs,s,m,l,xl,xxl} values.
+ * @param {Step[]} steps
+ * @returns {FluidProperty[]}
+ */
+export function calculateTextLabels(steps) {
+  const stepMap = {};
+  for (const s of steps) stepMap[s.step] = s;
+  return TEXT_LABEL_MAP
+    .filter(entry => stepMap[entry.step])
+    .map(entry => ({
+      label: entry.label,
+      clamp: stepMap[entry.step].clamp,
+      minFontSize: stepMap[entry.step].minFontSize,
+      maxFontSize: stepMap[entry.step].maxFontSize
+    }));
+}
+
+/**
+ * Generate semantic heading size aliases from type scale steps.
+ * Maps steps to --h1 through --h6 values.
+ * @param {Step[]} steps
+ * @returns {FluidProperty[]}
+ */
+export function calculateHeadingLabels(steps) {
+  const stepMap = {};
+  for (const s of steps) stepMap[s.step] = s;
+  return HEADING_LABEL_MAP
+    .filter(entry => stepMap[entry.step])
+    .map(entry => ({
+      label: entry.label,
+      clamp: stepMap[entry.step].clamp,
+      minFontSize: stepMap[entry.step].minFontSize,
+      maxFontSize: stepMap[entry.step].maxFontSize
+    }));
+}
+
+/**
+ * Generate crossover pairs between semantic heading sizes.
+ * @param {FluidProperty[]} headings
+ * @param {number} minWidth
+ * @param {number} maxWidth
+ * @param {RelativeTo} [relativeTo]
+ * @returns {CrossoverPair[]}
+ */
+export function calculateHeadingCrossoverPairs(headings, minWidth, maxWidth, relativeTo) {
+  const pairs = [];
+  for (let i = 0; i < headings.length - 1; i++) {
+    const a = headings[i];
+    const b = headings[i + 1];
+    pairs.push({
+      label: `${a.label}-to-${b.label}`,
+      clamp: calculateClamp({
+        minSize: Math.min(a.minFontSize, b.minFontSize),
+        maxSize: Math.max(a.maxFontSize, b.maxFontSize),
+        minWidth, maxWidth, relativeTo
+      })
+    });
+  }
+  return pairs;
+}
+
+// ─── Utility Fluid Properties ─────────────────────────────────────────────────
+
+/**
+ * Calculate a fluid gutter (page margin) value.
+ * @param {Object} config
+ * @param {number} config.minWidth
+ * @param {number} config.maxWidth
+ * @param {number} config.minGutter  — gutter at min viewport (px), default 16
+ * @param {number} config.maxGutter  — gutter at max viewport (px), default 80
+ * @param {RelativeTo} [config.relativeTo]
+ * @returns {FluidProperty}
+ */
+export function calculateGutter(config) {
+  const { minWidth, maxWidth, minGutter = 16, maxGutter = 80, relativeTo } = config;
+  return {
+    label: 'gutter',
+    clamp: calculateClamp({ minSize: minGutter, maxSize: maxGutter, minWidth, maxWidth, relativeTo })
+  };
+}
+
+/**
+ * Calculate a fluid content max-width value.
+ * @param {Object} config
+ * @param {number} config.minWidth
+ * @param {number} config.maxWidth
+ * @param {number} config.minContent  — content width at min viewport (px), default 640
+ * @param {number} config.maxContent  — content width at max viewport (px), default 1152
+ * @param {RelativeTo} [config.relativeTo]
+ * @returns {FluidProperty}
+ */
+export function calculateContentWidth(config) {
+  const { minWidth, maxWidth, minContent = 640, maxContent = 1152, relativeTo } = config;
+  return {
+    label: 'content-width',
+    clamp: calculateClamp({ minSize: minContent, maxSize: maxContent, minWidth, maxWidth, relativeTo })
   };
 }
