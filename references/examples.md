@@ -38,8 +38,8 @@ node scripts/generate-tokens.mjs <<'EOF'
   "space": {
     "minSize": 8,
     "maxSize": 12,
-    "positiveSteps": [0.5, 1, 1.5, 2, 3, 4, 6],
-    "negativeSteps": [0.25]
+    "positiveSteps": [1.5, 2, 3, 4, 6],
+    "negativeSteps": [0.5, 0.75]
   },
   "format": "css"
 }
@@ -103,3 +103,30 @@ node scripts/generate-tokens.mjs
 ```
 
 The script will ask for each parameter with sensible defaults.
+
+### Full Design System (with Section Space, Gutter, Content Width)
+
+```json
+{
+  "type": {
+    "minTypeScale": "perfect-fourth",
+    "maxTypeScale": 1.333,
+    "minFontSize": 16,
+    "maxFontSize": 20,
+    "negativeSteps": 2,
+    "positiveSteps": 5,
+    "minWidth": 375,
+    "maxWidth": 1440
+  },
+  "space": {
+    "minSize": 8,
+    "maxSize": 12,
+    "positiveSteps": [1.5, 2, 3, 4, 6],
+    "negativeSteps": [0.5, 0.75]
+  },
+  "sectionSpace": {},
+  "gutter": { "minGutter": 16, "maxGutter": 80 },
+  "contentWidth": { "minContent": 640, "maxContent": 1152 },
+  "format": "css"
+}
+```

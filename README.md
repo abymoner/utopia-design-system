@@ -58,7 +58,11 @@ node scripts/generate-tokens.mjs --config '{"format":"tailwind","type":{"minType
 ### Via API (import ES)
 
 ```js
-import { calculateTypeScale, calculateSpaceScale, checkWCAG } from './scripts/calculate.mjs';
+import {
+  calculateTypeScale, calculateSpaceScale, calculateSectionSpaceScale,
+  calculateTypeCrossoverPairs, calculateTextLabels, calculateHeadingLabels,
+  calculateGutter, calculateContentWidth, checkWCAG
+} from './scripts/calculate.mjs';
 
 const steps = calculateTypeScale({
   minWidth: 375, maxWidth: 1440,
@@ -67,6 +71,20 @@ const steps = calculateTypeScale({
   negativeSteps: 2, positiveSteps: 5
 });
 ```
+
+## Tokens générés
+
+| Catégorie | Exemple | Description |
+|-----------|---------|-------------|
+| Type scale | `--font-size-0: clamp(...)` | Steps numérotés (-2 à 5) |
+| Text labels | `--text-m: clamp(...)` | Aliases sémantiques (xs → xxl) |
+| Heading labels | `--h1: clamp(...)` | Tailles de titres (h1 → h6) |
+| Crossover pairs | `--font-size-1-to-0: clamp(...)` | Transitions entre steps adjacents |
+| Space scale | `--space-m: clamp(...)` | Labels sémantiques (xs → 4xl) |
+| One-up pairs | `--space-m-l: clamp(...)` | Transitions entre espacements |
+| Section space | `--section-space-xl: clamp(...)` | Espacement dédié aux sections |
+| Gutter | `--gutter: clamp(...)` | Marge latérale fluide |
+| Content width | `--content-width: clamp(...)` | Largeur max du conteneur |
 
 ## Formats de sortie
 

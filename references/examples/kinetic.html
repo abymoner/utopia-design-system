@@ -8,43 +8,51 @@
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --font-size--2: clamp(0.6252rem, 0.6008rem + 0.104vw, 0.6944rem);
+    --font-size-5: clamp(2.4883rem, 0.8766rem + 6.8769vw, 7.0657rem);
+    --font-size-4: clamp(2.0736rem, 1.0442rem + 4.3919vw, 4.997rem);
+    --font-size-3: clamp(1.728rem, 1.0921rem + 2.7131vw, 3.5339rem);
+    --font-size-2: clamp(1.44rem, 1.067rem + 1.5914vw, 2.4992rem);
+    --font-size-1: clamp(1.2rem, 1.0002rem + 0.8526vw, 1.7675rem);
+    --font-size-0: clamp(1rem, 0.912rem + 0.3756vw, 1.25rem);
     --font-size--1: clamp(0.8333rem, 0.8155rem + 0.0761vw, 0.884rem);
-    --font-size-0:  clamp(1rem, 0.912rem + 0.3756vw, 1.25rem);
-    --font-size-1:  clamp(1.2rem, 1.0002rem + 0.8526vw, 1.7675rem);
-    --font-size-2:  clamp(1.44rem, 1.067rem + 1.5914vw, 2.4992rem);
-    --font-size-3:  clamp(1.728rem, 1.0921rem + 2.7131vw, 3.5339rem);
-    --font-size-4:  clamp(2.0736rem, 1.0442rem + 4.3919vw, 4.997rem);
-    --font-size-5:  clamp(2.4883rem, 0.8766rem + 6.8769vw, 7.0657rem);
-    --space-xs:   clamp(0.0625rem, 0.0405rem + 0.0939vw, 0.125rem);
-    --space-s:    clamp(0.5rem, 0.368rem + 0.5634vw, 0.875rem);
-    --space-m:    clamp(0.125rem, 0.081rem + 0.1878vw, 0.25rem);
-    --space-l:    clamp(0.25rem, 0.184rem + 0.2817vw, 0.4375rem);
-    --space-xl:   clamp(0.5rem, 0.368rem + 0.5634vw, 0.875rem);
-    --space-2xl:  clamp(0.75rem, 0.5519rem + 0.8451vw, 1.3125rem);
-    --space-3xl:  clamp(1rem, 0.7359rem + 1.1268vw, 1.75rem);
-    --space-4xl:  clamp(1.5rem, 1.1039rem + 1.6901vw, 2.625rem);
-    --space-5xl:  clamp(2rem, 1.4718rem + 2.2535vw, 3.5rem);
-    --space-6xl:  clamp(3rem, 2.2077rem + 3.3803vw, 5.25rem);
-    --space-7xl:  clamp(4rem, 2.9437rem + 4.507vw, 7rem);
-    --space-xs-s:     clamp(0.0625rem, -0.2236rem + 1.2207vw, 0.875rem);
-    --space-s-xl:     clamp(0.5rem, 0.2139rem + 1.2207vw, 1.3125rem);
-    --space-xl-2xl:   clamp(0.5rem, 0.2139rem + 1.2207vw, 1.3125rem);
-    --space-2xl-3xl:  clamp(0.75rem, 0.3979rem + 1.5023vw, 1.75rem);
-    --space-3xl-4xl:  clamp(1rem, 0.4278rem + 2.4413vw, 2.625rem);
-    --space-4xl-5xl:  clamp(1.5rem, 0.7958rem + 3.0047vw, 3.5rem);
-    --space-5xl-6xl:  clamp(2rem, 0.8556rem + 4.8826vw, 5.25rem);
-    --space-6xl-7xl:  clamp(3rem, 1.5915rem + 6.0094vw, 7rem);
+    --font-size--2: clamp(0.6252rem, 0.6008rem + 0.104vw, 0.6944rem);
+    --text-xs: clamp(0.6252rem, 0.6008rem + 0.104vw, 0.6944rem);
+    --text-s: clamp(0.8333rem, 0.8155rem + 0.0761vw, 0.884rem);
+    --text-m: clamp(1rem, 0.912rem + 0.3756vw, 1.25rem);
+    --text-l: clamp(1.2rem, 1.0002rem + 0.8526vw, 1.7675rem);
+    --text-xl: clamp(1.44rem, 1.067rem + 1.5914vw, 2.4992rem);
+    --text-xxl: clamp(1.728rem, 1.0921rem + 2.7131vw, 3.5339rem);
+    --h6: clamp(0.8333rem, 0.8155rem + 0.0761vw, 0.884rem);
+    --h5: clamp(1rem, 0.912rem + 0.3756vw, 1.25rem);
+    --h4: clamp(1.2rem, 1.0002rem + 0.8526vw, 1.7675rem);
+    --h3: clamp(1.44rem, 1.067rem + 1.5914vw, 2.4992rem);
+    --h2: clamp(1.728rem, 1.0921rem + 2.7131vw, 3.5339rem);
+    --h1: clamp(2.0736rem, 1.0442rem + 4.3919vw, 4.997rem);
+    --space-4xl: clamp(3rem, 2.4718rem + 2.2535vw, 4.5rem);
+    --space-3xl: clamp(2rem, 1.6479rem + 1.5023vw, 3rem);
+    --space-2xl: clamp(1.5rem, 1.2359rem + 1.1268vw, 2.25rem);
+    --space-xl: clamp(1rem, 0.8239rem + 0.7512vw, 1.5rem);
+    --space-l: clamp(0.75rem, 0.618rem + 0.5634vw, 1.125rem);
+    --space-m: clamp(0.5rem, 0.412rem + 0.3756vw, 0.75rem);
+    --space-s: clamp(0.375rem, 0.309rem + 0.2817vw, 0.5625rem);
+    --space-xs: clamp(0.25rem, 0.206rem + 0.1878vw, 0.375rem);
+    --space-xs-s: clamp(0.25rem, 0.14rem + 0.4695vw, 0.5625rem);
+    --space-s-m: clamp(0.375rem, 0.243rem + 0.5634vw, 0.75rem);
+    --space-m-l: clamp(0.5rem, 0.2799rem + 0.939vw, 1.125rem);
+    --space-l-xl: clamp(0.75rem, 0.4859rem + 1.1268vw, 1.5rem);
+    --space-xl-2xl: clamp(1rem, 0.5599rem + 1.8779vw, 2.25rem);
+    --space-2xl-3xl: clamp(1.5rem, 0.9718rem + 2.2535vw, 3rem);
+    --space-3xl-4xl: clamp(2rem, 1.1197rem + 3.7559vw, 4.5rem);
 
-    /* Warm terracotta palette */
-    --color-bg: #fdf8f5;
-    --color-surface: #fffaf7;
-    --color-text: #2b211c;
-    --color-text-muted: #8b7d72;
-    --color-accent: #c25c3a;
-    --color-accent-soft: #e8c4b4;
-    --color-border: #e6dbd3;
-    --color-warm: #f0e3d9;
+    /* Terracotta palette */
+    --color-bg: #faf6f3;
+    --color-surface: #ffffff;
+    --color-text: #2d1f1a;
+    --color-text-muted: #8a7a72;
+    --color-accent: #c4543c;
+    --color-accent-soft: #e8d5cc;
+    --color-border: #e3d6ce;
+    --color-warm: #f7f0ea;
   }
 
   html { font-size: 100%; -webkit-font-smoothing: antialiased; }
@@ -57,52 +65,59 @@
   }
 
   .container {
-    max-width: 76rem;
+    max-width: 72rem;
     margin: 0 auto;
     padding: 0 var(--space-3xl);
   }
 
-  /* ─── Kinetic wave hero ─── */
+  /* ─── Hero ─── */
   .hero {
-    min-height: 80vh;
+    min-height: 75vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     position: relative;
     overflow: hidden;
-    padding: var(--space-7xl) 0 var(--space-5xl);
-    background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface) 100%);
+    padding: var(--space-4xl) 0 var(--space-3xl);
   }
 
-  .hero__wave {
+  .hero__decor {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
+    top: 50%;
+    right: -6rem;
+    transform: translateY(-50%);
+    width: 30rem;
+    height: 30rem;
     pointer-events: none;
-    opacity: 0.3;
+    opacity: 0.25;
   }
 
-  .hero__wave path {
-    fill: var(--color-accent-soft);
+  .hero__decor polygon {
+    fill: none;
+    stroke: var(--color-accent-soft);
+    stroke-width: 1;
+  }
+
+  .hero__decor line {
+    stroke: var(--color-accent-soft);
+    stroke-width: 0.5;
   }
 
   .hero__label {
     font-size: var(--font-size--1);
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    color: var(--color-accent);
-    margin-bottom: var(--space-xl);
+    color: var(--color-text-muted);
     font-weight: 600;
+    margin-bottom: var(--space-xl);
   }
 
   .hero__title {
     font-size: var(--font-size-5);
-    font-weight: 700;
+    font-weight: 650;
     line-height: 1.05;
     letter-spacing: -0.035em;
-    max-width: 16ch;
+    max-width: 18ch;
     margin-bottom: var(--space-2xl);
   }
 
@@ -114,13 +129,13 @@
     font-size: var(--font-size-1);
     color: var(--color-text-muted);
     line-height: 1.55;
-    max-width: 54ch;
+    max-width: 55ch;
   }
 
   .hero__meta {
     display: flex;
     gap: var(--space-2xl);
-    margin-top: var(--space-4xl);
+    margin-top: var(--space-3xl);
     padding-top: var(--space-2xl);
     border-top: 1px solid var(--color-border);
     font-size: var(--font-size--1);
@@ -133,9 +148,9 @@
     font-weight: 600;
   }
 
-  /* ─── Section commune ─── */
+  /* ─── Sections ─── */
   .section {
-    padding: var(--space-6xl) 0 var(--space-7xl);
+    padding: var(--space-4xl) 0;
   }
 
   .section--alt {
@@ -148,7 +163,7 @@
     font-size: var(--font-size--1);
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--color-accent);
+    color: var(--color-text-muted);
     font-weight: 600;
     margin-bottom: var(--space-s);
   }
@@ -167,7 +182,7 @@
     color: var(--color-text-muted);
     line-height: 1.7;
     max-width: 60ch;
-    margin-bottom: var(--space-4xl);
+    margin-bottom: var(--space-3xl);
   }
 
   /* ─── Grid ─── */
@@ -225,7 +240,7 @@
     background: var(--color-warm);
     border-radius: 1rem;
     border: 1px solid var(--color-accent-soft);
-    margin-bottom: var(--space-4xl);
+    margin-bottom: var(--space-3xl);
   }
 
   .ratio-vis__side {
@@ -252,7 +267,7 @@
 
   /* ─── Type showcase ─── */
   .type-showcase {
-    padding: var(--space-6xl) 0;
+    padding: var(--space-4xl) 0;
   }
 
   .type-demo {
@@ -281,7 +296,7 @@
     color: var(--color-text-muted);
     margin-left: auto;
     text-align: right;
-    max-width: 18rem;
+    max-width: 16rem;
     flex-shrink: 0;
   }
 
@@ -297,7 +312,7 @@
   /* ─── WCAG banner ─── */
   .wcag-banner {
     background: #fef3e8;
-    border: 1px solid #e8c4b4;
+    border: 1px solid var(--color-accent-soft);
     border-radius: 0.75rem;
     padding: var(--space-2xl);
     margin-top: var(--space-3xl);
@@ -372,7 +387,7 @@
 
   /* ─── Tokens panel ─── */
   .tokens-section {
-    padding: var(--space-6xl) 0;
+    padding: var(--space-4xl) 0;
   }
 
   .tokens-panel {
@@ -408,7 +423,7 @@
 
   /* ─── Footer ─── */
   .footer {
-    padding: var(--space-4xl) 0;
+    padding: var(--space-3xl) 0;
     border-top: 1px solid var(--color-border);
     font-size: var(--font-size--1);
     color: var(--color-text-muted);
@@ -427,7 +442,8 @@
   /* ─── Responsive ─── */
   @media (max-width: 640px) {
     .container { padding: 0 var(--space-xl); }
-    .hero { min-height: 70vh; padding: var(--space-5xl) 0 var(--space-4xl); }
+    .hero { min-height: 65vh; padding: var(--space-4xl) 0 var(--space-3xl); }
+    .hero__decor { display: none; }
     .hero__meta { flex-direction: column; gap: var(--space-xs); }
     .type-demo__step { flex-direction: column; gap: var(--space-2xs); }
     .type-demo__note { text-align: left; max-width: none; }
@@ -442,35 +458,40 @@
 <body>
 
 <section class="hero">
-  <svg class="hero__wave" viewBox="0 0 1440 320" preserveAspectRatio="none">
-    <path d="M0,192 C360,256 720,96 1440,160 L1440,320 L0,320 Z"/>
-    <path d="M0,224 C240,288 600,128 1440,192 L1440,320 L0,320 Z" opacity="0.5"/>
+  <svg class="hero__decor" viewBox="0 0 400 400">
+    <polygon points="200,20 340,120 340,280 200,380 60,280 60,120"/>
+    <polygon points="200,60 300,135 300,265 200,340 100,265 100,135"/>
+    <polygon points="200,100 260,150 260,250 200,300 140,250 140,150"/>
+    <polygon points="200,140 220,165 220,235 200,260 180,235 180,165"/>
+    <line x1="20" y1="200" x2="380" y2="200"/>
+    <line x1="200" y1="20" x2="200" y2="380"/>
   </svg>
   <div class="container">
-    <p class="hero__label">Kinetic · Dynamic Ratio · 1.2 → 1.414</p>
-    <h1 class="hero__title">A ratio that<br><span class="accent">moves with&nbsp;you</span></h1>
+    <p class="hero__label">Kinetic · Dynamic · 1.2 → 1.414</p>
+    <h1 class="hero__title">A ratio that <span class="accent">bends</span> with the&nbsp;viewport</h1>
     <p class="hero__subtitle">
-      Minor third on your phone. Augmented fourth on your desktop.
-      The type hierarchy <strong>compresses and expands</strong> with the viewport —
-      tight and readable at small sizes, dramatic and editorial at large ones.
+      A dynamic fluid scale that interpolates between <strong>minor third</strong> (1.2)
+      at narrow viewports and <strong>augmented fourth</strong> (1.414) at wide ones.
+      Gentle hierarchy on mobile, editorial drama on desktop — same scale, two extremes.
     </p>
     <div class="hero__meta">
-      <span><strong>min</strong> minor-third · 1.2</span>
-      <span><strong>max</strong> augmented-fourth · 1.414</span>
-      <span>Viewport 375–1440 px</span>
-      <span>Steps −2 to 5</span>
+      <span><strong>Scale</strong> minor-third → augmented-fourth · 1.2 → 1.414</span>
+      <span><strong>Base</strong> 16 → 20 px</span>
+      <span><strong>Viewport</strong> 375–1440 px</span>
+      <span><strong>Steps</strong> −2 to 5</span>
     </div>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="section__overline">Why two ratios?</div>
-    <h2 class="section__title">The same scale bends at every width</h2>
+    <div class="section__overline">Two ratios, one scale</div>
+    <h2 class="section__title">The same type bends at every width</h2>
     <p class="section__lede">
-      A fixed ratio keeps the same proportions everywhere. A <em>dynamic</em> ratio
-      interpolates between two different scales — giving you a gentle hierarchy on
-      mobile and a bold editorial voice on desktop. The typeface bends to the medium.
+      A fixed ratio keeps proportions identical everywhere. A <em>dynamic</em> ratio
+      interpolates between two different scalars — compressing hierarchy on small
+      screens for readability, expanding it on large screens for editorial impact.
+      The typeface adapts to the medium.
     </p>
 
     <div class="ratio-vis">
@@ -487,30 +508,30 @@
 
     <div class="grid-2">
       <article class="card card--filled">
-        <p class="card__icon">↕</p>
-        <h3 class="card__title">Compressed at small</h3>
+        <p class="card__icon">▾</p>
+        <h3 class="card__title">Compressed at narrow</h3>
         <p class="card__text">
-          At 375 px, step 5 is 2.49 rem — a clear but compact headline.
-          The minor third (1.2) keeps everything close together, maximising
-          readability on a small screen.
+          At 375 px the minor third (1.2) keeps all steps tightly packed.
+          Step 5 lands at 2.49 rem — a clear but compact headline that
+          leaves room for content.
         </p>
       </article>
       <article class="card card--filled">
-        <p class="card__icon">↗</p>
-        <h3 class="card__title">Expanded at large</h3>
+        <p class="card__icon">▴</p>
+        <h3 class="card__title">Expanded at wide</h3>
         <p class="card__text">
-          At 1440 px, step 5 reaches 7.07 rem — almost 3× larger than on mobile.
-          The augmented fourth (1.414) creates editorial drama that fills
-          the screen naturally.
+          At 1440 px the augmented fourth (1.414) pushes step 5 to 7.07 rem —
+          nearly 3× larger than on mobile. Editorial drama that fills the
+          screen without breaking rhythm.
         </p>
       </article>
       <article class="card card--filled">
-        <p class="card__icon">≈</p>
-        <h3 class="card__title">Smooth interpolation</h3>
+        <p class="card__icon">∼</p>
+        <h3 class="card__title">Smooth across the arc</h3>
         <p class="card__text">
-          Between 375 and 1440 px, both the base size and the scale ratio
-          interpolate smoothly. Every intermediate viewport gets a
-          proportionally tuned hierarchy.
+          Between 375 and 1440 px both the base size and the ratio interpolate
+          continuously. Every intermediate viewport gets a proportionally tuned
+          hierarchy — no breakpoints, no jumps.
         </p>
       </article>
     </div>
@@ -522,9 +543,9 @@
     <div class="section__overline">The full spectrum</div>
     <h2 class="section__title">Type scale · Dynamic ratio</h2>
     <p class="section__lede">
-      Resize your browser. Watch how the relationship between steps changes —
-      they spread apart at wide viewports and contract at narrow ones.
-      That's the dynamic ratio at work.
+      Resize your browser. Watch how the proportional distance between steps
+      changes — they spread apart at wide viewports and contract at narrow ones.
+      That's the dynamic ratio in action.
     </p>
     <div class="type-demo">
       <div class="type-demo__step">
@@ -572,13 +593,12 @@
     <div class="wcag-banner">
       <div class="wcag-banner__icon">⚠️</div>
       <div>
-        <div class="wcag-banner__title">WCAG violation detected at step 5</div>
+        <div class="wcag-banner__title">WCAG consideration at step 5</div>
         <div class="wcag-banner__text">
-          The dynamic ratio produces such dramatic growth at the upper end that
-          step 5 fails WCAG 1.4.4 between 1243 px and 2268 px viewport width.
-          This is expected for aggressive editorial scales — the violation only
-          affects the largest heading and can be mitigated with a separate
-          <code>font-size</code> at extreme widths.
+          The dynamic ratio produces steep growth at the upper end — step 5
+          can exceed the 200 % zoom threshold between ~1243 px and ~2268 px
+          viewport width. This primarily affects the hero heading and can be
+          mitigated with a separate <code>font-size</code> at extreme widths.
         </div>
       </div>
     </div>
@@ -587,33 +607,28 @@
 
 <section class="section">
   <div class="container">
-    <div class="section__overline">Generous spacing</div>
-    <h2 class="section__title">Space scale · 11 fluid steps</h2>
+    <div class="section__overline">Fluid spacing</div>
+    <h2 class="section__title">Space scale · 8 fluid steps</h2>
     <p class="section__lede">
-      A wider base (8 → 14 px) with steps up to 8× gives breathing room at
-      every viewport. The bars below use the actual <code>--space-*</code> tokens
-      as their widths — resize to see them scale in real time.
+      A moderate base (8 → 12 px) with semantic multipliers keeps the vertical
+      rhythm compact. The bars below track <code>--space-*</code> tokens in real
+      time — resize to feel the spacing breathe.
     </p>
     <div class="space-bars" id="spaceBars">
+      <div class="space-bar">
+        <span class="space-bar__label">--space-2xl</span>
+        <div class="space-bar__track"><div class="space-bar__fill" style="width:var(--space-2xl);min-width:4px"></div></div>
+        <span class="space-bar__value" id="val-space-2xl"></span>
+      </div>
+      <div class="space-bar">
+        <span class="space-bar__label">--space-3xl</span>
+        <div class="space-bar__track"><div class="space-bar__fill" style="width:var(--space-3xl);min-width:4px"></div></div>
+        <span class="space-bar__value" id="val-space-3xl"></span>
+      </div>
       <div class="space-bar">
         <span class="space-bar__label">--space-4xl</span>
         <div class="space-bar__track"><div class="space-bar__fill" style="width:var(--space-4xl);min-width:4px"></div></div>
         <span class="space-bar__value" id="val-space-4xl"></span>
-      </div>
-      <div class="space-bar">
-        <span class="space-bar__label">--space-5xl</span>
-        <div class="space-bar__track"><div class="space-bar__fill" style="width:var(--space-5xl);min-width:4px"></div></div>
-        <span class="space-bar__value" id="val-space-5xl"></span>
-      </div>
-      <div class="space-bar">
-        <span class="space-bar__label">--space-6xl</span>
-        <div class="space-bar__track"><div class="space-bar__fill" style="width:var(--space-6xl);min-width:4px"></div></div>
-        <span class="space-bar__value" id="val-space-6xl"></span>
-      </div>
-      <div class="space-bar">
-        <span class="space-bar__label">--space-7xl</span>
-        <div class="space-bar__track"><div class="space-bar__fill" style="width:var(--space-7xl);min-width:4px"></div></div>
-        <span class="space-bar__value" id="val-space-7xl"></span>
       </div>
     </div>
   </div>
@@ -625,38 +640,53 @@
     <h2 class="section__title">Generated tokens</h2>
     <details class="tokens-panel">
       <summary>Show all CSS custom properties</summary>
-      <pre><code>:root {
-  /* ─── Type Scale (dynamic: 1.2 → 1.414) ─── */
-  --font-size--2: clamp(0.6252rem, 0.6008rem + 0.104vw, 0.6944rem);
-  --font-size--1: clamp(0.8333rem, 0.8155rem + 0.0761vw, 0.884rem);
-  --font-size-0:  clamp(1rem, 0.912rem + 0.3756vw, 1.25rem);
-  --font-size-1:  clamp(1.2rem, 1.0002rem + 0.8526vw, 1.7675rem);
-  --font-size-2:  clamp(1.44rem, 1.067rem + 1.5914vw, 2.4992rem);
-  --font-size-3:  clamp(1.728rem, 1.0921rem + 2.7131vw, 3.5339rem);
-  --font-size-4:  clamp(2.0736rem, 1.0442rem + 4.3919vw, 4.997rem);
-  --font-size-5:  clamp(2.4883rem, 0.8766rem + 6.8769vw, 7.0657rem);
+      <pre><code>  :root {
+    --font-size-5: clamp(2.4883rem, 0.8766rem + 6.8769vw, 7.0657rem);
+    --font-size-4: clamp(2.0736rem, 1.0442rem + 4.3919vw, 4.997rem);
+    --font-size-3: clamp(1.728rem, 1.0921rem + 2.7131vw, 3.5339rem);
+    --font-size-2: clamp(1.44rem, 1.067rem + 1.5914vw, 2.4992rem);
+    --font-size-1: clamp(1.2rem, 1.0002rem + 0.8526vw, 1.7675rem);
+    --font-size-0: clamp(1rem, 0.912rem + 0.3756vw, 1.25rem);
+    --font-size--1: clamp(0.8333rem, 0.8155rem + 0.0761vw, 0.884rem);
+    --font-size--2: clamp(0.6252rem, 0.6008rem + 0.104vw, 0.6944rem);
+    --text-xs: clamp(0.6252rem, 0.6008rem + 0.104vw, 0.6944rem);
+    --text-s: clamp(0.8333rem, 0.8155rem + 0.0761vw, 0.884rem);
+    --text-m: clamp(1rem, 0.912rem + 0.3756vw, 1.25rem);
+    --text-l: clamp(1.2rem, 1.0002rem + 0.8526vw, 1.7675rem);
+    --text-xl: clamp(1.44rem, 1.067rem + 1.5914vw, 2.4992rem);
+    --text-xxl: clamp(1.728rem, 1.0921rem + 2.7131vw, 3.5339rem);
+    --h6: clamp(0.8333rem, 0.8155rem + 0.0761vw, 0.884rem);
+    --h5: clamp(1rem, 0.912rem + 0.3756vw, 1.25rem);
+    --h4: clamp(1.2rem, 1.0002rem + 0.8526vw, 1.7675rem);
+    --h3: clamp(1.44rem, 1.067rem + 1.5914vw, 2.4992rem);
+    --h2: clamp(1.728rem, 1.0921rem + 2.7131vw, 3.5339rem);
+    --h1: clamp(2.0736rem, 1.0442rem + 4.3919vw, 4.997rem);
+    --space-4xl: clamp(3rem, 2.4718rem + 2.2535vw, 4.5rem);
+    --space-3xl: clamp(2rem, 1.6479rem + 1.5023vw, 3rem);
+    --space-2xl: clamp(1.5rem, 1.2359rem + 1.1268vw, 2.25rem);
+    --space-xl: clamp(1rem, 0.8239rem + 0.7512vw, 1.5rem);
+    --space-l: clamp(0.75rem, 0.618rem + 0.5634vw, 1.125rem);
+    --space-m: clamp(0.5rem, 0.412rem + 0.3756vw, 0.75rem);
+    --space-s: clamp(0.375rem, 0.309rem + 0.2817vw, 0.5625rem);
+    --space-xs: clamp(0.25rem, 0.206rem + 0.1878vw, 0.375rem);
+    --space-xs-s: clamp(0.25rem, 0.14rem + 0.4695vw, 0.5625rem);
+    --space-s-m: clamp(0.375rem, 0.243rem + 0.5634vw, 0.75rem);
+    --space-m-l: clamp(0.5rem, 0.2799rem + 0.939vw, 1.125rem);
+    --space-l-xl: clamp(0.75rem, 0.4859rem + 1.1268vw, 1.5rem);
+    --space-xl-2xl: clamp(1rem, 0.5599rem + 1.8779vw, 2.25rem);
+    --space-2xl-3xl: clamp(1.5rem, 0.9718rem + 2.2535vw, 3rem);
+    --space-3xl-4xl: clamp(2rem, 1.1197rem + 3.7559vw, 4.5rem);
 
-  /* ─── Space Scale (base: 8→14 px) ─── */
-  --space-xs:   clamp(0.0625rem, 0.0405rem + 0.0939vw, 0.125rem);
-  --space-s:    clamp(0.5rem, 0.368rem + 0.5634vw, 0.875rem);
-  --space-xl:   clamp(0.5rem, 0.368rem + 0.5634vw, 0.875rem);
-  --space-2xl:  clamp(0.75rem, 0.5519rem + 0.8451vw, 1.3125rem);
-  --space-3xl:  clamp(1rem, 0.7359rem + 1.1268vw, 1.75rem);
-  --space-4xl:  clamp(1.5rem, 1.1039rem + 1.6901vw, 2.625rem);
-  --space-5xl:  clamp(2rem, 1.4718rem + 2.2535vw, 3.5rem);
-  --space-6xl:  clamp(3rem, 2.2077rem + 3.3803vw, 5.25rem);
-  --space-7xl:  clamp(4rem, 2.9437rem + 4.507vw, 7rem);
-
-  /* ─── One-Up Pairs ─── */
-  --space-xs-s:     clamp(0.0625rem, -0.2236rem + 1.2207vw, 0.875rem);
-  --space-s-xl:     clamp(0.5rem, 0.2139rem + 1.2207vw, 1.3125rem);
-  --space-xl-2xl:   clamp(0.5rem, 0.2139rem + 1.2207vw, 1.3125rem);
-  --space-2xl-3xl:  clamp(0.75rem, 0.3979rem + 1.5023vw, 1.75rem);
-  --space-3xl-4xl:  clamp(1rem, 0.4278rem + 2.4413vw, 2.625rem);
-  --space-4xl-5xl:  clamp(1.5rem, 0.7958rem + 3.0047vw, 3.5rem);
-  --space-5xl-6xl:  clamp(2rem, 0.8556rem + 4.8826vw, 5.25rem);
-  --space-6xl-7xl:  clamp(3rem, 1.5915rem + 6.0094vw, 7rem);
-}</code></pre>
+    /* Terracotta palette */
+    --color-bg: #faf6f3;
+    --color-surface: #ffffff;
+    --color-text: #2d1f1a;
+    --color-text-muted: #8a7a72;
+    --color-accent: #c4543c;
+    --color-accent-soft: #e8d5cc;
+    --color-border: #e3d6ce;
+    --color-warm: #f7f0ea;
+  }</code></pre>
     </details>
   </div>
 </section>
@@ -665,17 +695,17 @@
   <div class="container">
     <div class="footer__config">
       <span>utopia-design-system</span>
-      <span>minor-third → augmented-fourth</span>
+      <span>minor-third → augmented-fourth (1.2 → 1.414)</span>
       <span>375–1440 px</span>
       <span>16→20 px base</span>
-      <span>11 space steps</span>
+      <span>8 space steps</span>
     </div>
-    <p>Generated via <code>scripts/generate-tokens.mjs</code> · Dynamic ratio concept</p>
+    <p>Resize the browser to see fluid interpolation across the full dynamic range.</p>
   </div>
 </footer>
 
 <script>
-  const ids = ['space-4xl', 'space-5xl', 'space-6xl', 'space-7xl'];
+  const ids = ['space-2xl', 'space-3xl', 'space-4xl'];
   function update() {
     const style = getComputedStyle(document.documentElement);
     for (const id of ids) {

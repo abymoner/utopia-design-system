@@ -19,8 +19,8 @@ space(n, vw) = base(vw) × multiplier[n]
 |-----------------|----------|----------------------------------|--------------------------------|
 | `minSize`       | number   | 8                                | Base size at min viewport (px) |
 | `maxSize`       | number   | 12                               | Base size at max viewport (px) |
-| `positiveSteps` | number[] | `[0.5, 1, 1.5, 2, 3, 4, 6]`    | Step multipliers above base    |
-| `negativeSteps` | number[] | `[0.25]`                         | Step multipliers below base    |
+| `positiveSteps` | number[] | `[1.5, 2, 3, 4, 6]`             | Step multipliers above base    |
+| `negativeSteps` | number[] | `[0.5, 0.75]`                    | Step multipliers below base    |
 | `customSizes`   | string[] | `[]`                             | Ad-hoc pairs e.g. `["xs-l"]`  |
 | `minWidth`      | number   | 375                              | Narrowest viewport (px)        |
 | `maxWidth`      | number   | 1440                             | Widest viewport (px)           |
@@ -32,14 +32,16 @@ Multipliers are raw numbers that scale the base size. Typical values:
 
 | Multiplier | Label | Typical Usage          |
 |-----------|-------|------------------------|
-| 0.25      | 3xs   | Tiny gap, icon inset   |
-| 0.5       | 2xs   | Tight gap, badge       |
-| 1         | xs    | Small element padding  |
-| 1.5       | s     | Compact card padding   |
-| 2         | m     | Standard spacing       |
-| 3         | l     | Section spacing        |
-| 4         | xl    | Large section gap      |
-| 6         | 2xl   | Page section margin    |
+| 0.125     | 3xs   | Tiny gap, icon inset   |
+| 0.25      | 2xs   | Tight gap, badge       |
+| 0.5       | xs    | Small element padding  |
+| 0.75      | s     | Compact card padding   |
+| 1         | m     | Standard spacing       |
+| 1.5       | l     | Section spacing        |
+| 2         | xl    | Large section gap      |
+| 3         | 2xl   | Page section margin    |
+| 4         | 3xl   | Wide page margin       |
+| 6         | 4xl   | Major section padding  |
 
 ## One-Up Pairs
 
@@ -66,3 +68,37 @@ sizes and computes a clamp between them.
   --space-2xl: clamp(3.00rem, 2.48rem + 2.61vw, 4.50rem);
 }
 ```
+
+## Section Space Scale
+
+A separate fluid space scale for section padding and margins, using larger default multipliers:
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `positiveSteps` | `[1.5, 2, 3, 4, 6]` | Step multipliers above base |
+| `negativeSteps` | `[0.5, 0.75]` | Step multipliers below base |
+
+Output as `--section-space-{label}` with its own one-up pairs (`--section-space-m-l`, etc.).
+
+## Gutter
+
+A single fluid value for page-level horizontal margins:
+
+```css
+--gutter: clamp(1rem, -0.41rem + 6.01vw, 5rem);
+```
+
+Configure with `minGutter` (default 16 px) and `maxGutter` (default 80 px) in the config's `gutter` section.
+
+## Content Width
+
+A fluid max-width for the main content container, with a safe variant that accounts for gutters:
+
+```css
+--content-width: clamp(40rem, 28.73rem + 48.08vw, 72rem);
+--content-width-safe: min(var(--content-width), calc(100% - var(--gutter) * 2));
+```
+
+Configure with `minContent` (default 640 px) and `maxContent` (default 1152 px) in the config's `contentWidth` section.
+
+The `--content-width-safe` utility ensures the content never overflows the viewport at any width.

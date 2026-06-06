@@ -3,50 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Expressiva — Exponential Fluid Scale (Golden Ratio)</title>
+<title>Expressiva — Dramatic Fluid Scale (Golden Ratio)</title>
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
+    --font-size-6: clamp(20.1848rem, 17.8157rem + 10.1082vw, 26.913rem);
+    --font-size-5: clamp(12.4751rem, 11.0109rem + 6.2473vw, 16.6335rem);
+    --font-size-4: clamp(7.7102rem, 6.8053rem + 3.8611vw, 10.2803rem);
+    --font-size-3: clamp(4.7653rem, 4.206rem + 2.3864vw, 6.3537rem);
+    --font-size-2: clamp(2.9452rem, 2.5995rem + 1.4749vw, 3.9269rem);
+    --font-size-1: clamp(1.8203rem, 1.6066rem + 0.9115vw, 2.427rem);
+    --font-size-0: clamp(1.125rem, 0.993rem + 0.5634vw, 1.5rem);
     --font-size--1: clamp(0.6953rem, 0.6137rem + 0.3482vw, 0.9271rem);
-    --font-size-0:  clamp(1.125rem, 0.993rem + 0.5634vw, 1.5rem);
-    --font-size-1:  clamp(1.8203rem, 1.6066rem + 0.9115vw, 2.427rem);
-    --font-size-2:  clamp(2.9452rem, 2.5995rem + 1.4749vw, 3.9269rem);
-    --font-size-3:  clamp(4.7653rem, 4.206rem + 2.3864vw, 6.3537rem);
-    --font-size-4:  clamp(7.7102rem, 6.8053rem + 3.8611vw, 10.2803rem);
-    --font-size-5:  clamp(12.4751rem, 11.0109rem + 6.2473vw, 16.6335rem);
-    --font-size-6:  clamp(20.1848rem, 17.8157rem + 10.1082vw, 26.913rem);
-    --space-xs:   clamp(0.125rem, 0.103rem + 0.0939vw, 0.1875rem);
-    --space-s:    clamp(0.75rem, 0.5739rem + 0.7512vw, 1.25rem);
-    --space-m:    clamp(0.1875rem, 0.1435rem + 0.1878vw, 0.3125rem);
-    --space-l:    clamp(0.375rem, 0.287rem + 0.3756vw, 0.625rem);
-    --space-xl:   clamp(0.75rem, 0.5739rem + 0.7512vw, 1.25rem);
-    --space-2xl:  clamp(1.125rem, 0.8609rem + 1.1268vw, 1.875rem);
-    --space-3xl:  clamp(1.5rem, 1.1479rem + 1.5023vw, 2.5rem);
-    --space-4xl:  clamp(2.25rem, 1.7218rem + 2.2535vw, 3.75rem);
-    --space-5xl:  clamp(3rem, 2.2958rem + 3.0047vw, 5rem);
-    --space-6xl:  clamp(4.5rem, 3.4437rem + 4.507vw, 7.5rem);
-    --space-7xl:  clamp(6rem, 4.5915rem + 6.0094vw, 10rem);
-    --space-8xl:  clamp(9rem, 6.8873rem + 9.0141vw, 15rem);
-    --space-xs-s:     clamp(0.125rem, -0.2711rem + 1.6901vw, 1.25rem);
-    --space-s-xl:     clamp(0.75rem, 0.3539rem + 1.6901vw, 1.875rem);
-    --space-xl-2xl:   clamp(0.75rem, 0.3539rem + 1.6901vw, 1.875rem);
-    --space-2xl-3xl:  clamp(1.125rem, 0.6408rem + 2.0657vw, 2.5rem);
-    --space-3xl-4xl:  clamp(1.5rem, 0.7077rem + 3.3803vw, 3.75rem);
-    --space-4xl-5xl:  clamp(2.25rem, 1.2817rem + 4.1315vw, 5rem);
-    --space-5xl-6xl:  clamp(3rem, 1.4155rem + 6.7606vw, 7.5rem);
-    --space-6xl-7xl:  clamp(4.5rem, 2.5634rem + 8.2629vw, 10rem);
-    --space-7xl-8xl:  clamp(6rem, 2.831rem + 13.5211vw, 15rem);
+    --text-s: clamp(0.6953rem, 0.6137rem + 0.3482vw, 0.9271rem);
+    --text-m: clamp(1.125rem, 0.993rem + 0.5634vw, 1.5rem);
+    --text-l: clamp(1.8203rem, 1.6066rem + 0.9115vw, 2.427rem);
+    --text-xl: clamp(2.9452rem, 2.5995rem + 1.4749vw, 3.9269rem);
+    --text-xxl: clamp(4.7653rem, 4.206rem + 2.3864vw, 6.3537rem);
+    --h6: clamp(0.6953rem, 0.6137rem + 0.3482vw, 0.9271rem);
+    --h5: clamp(1.125rem, 0.993rem + 0.5634vw, 1.5rem);
+    --h4: clamp(1.8203rem, 1.6066rem + 0.9115vw, 2.427rem);
+    --h3: clamp(2.9452rem, 2.5995rem + 1.4749vw, 3.9269rem);
+    --h2: clamp(4.7653rem, 4.206rem + 2.3864vw, 6.3537rem);
+    --h1: clamp(7.7102rem, 6.8053rem + 3.8611vw, 10.2803rem);
+    --space-4xl: clamp(3.75rem, 2.9577rem + 3.3803vw, 6rem);
+    --space-3xl: clamp(2.5rem, 1.9718rem + 2.2535vw, 4rem);
+    --space-2xl: clamp(1.875rem, 1.4789rem + 1.6901vw, 3rem);
+    --space-xl: clamp(1.25rem, 0.9859rem + 1.1268vw, 2rem);
+    --space-l: clamp(0.9375rem, 0.7394rem + 0.8451vw, 1.5rem);
+    --space-m: clamp(0.625rem, 0.493rem + 0.5634vw, 1rem);
+    --space-s: clamp(0.5rem, 0.412rem + 0.3756vw, 0.75rem);
+    --space-xs: clamp(0.3125rem, 0.2465rem + 0.2817vw, 0.5rem);
+    --space-xs-s: clamp(0.3125rem, 0.1585rem + 0.6573vw, 0.75rem);
+    --space-s-m: clamp(0.5rem, 0.3239rem + 0.7512vw, 1rem);
+    --space-m-l: clamp(0.625rem, 0.3169rem + 1.3146vw, 1.5rem);
+    --space-l-xl: clamp(0.9375rem, 0.5634rem + 1.5962vw, 2rem);
+    --space-xl-2xl: clamp(1.25rem, 0.6338rem + 2.6291vw, 3rem);
+    --space-2xl-3xl: clamp(1.875rem, 1.1268rem + 3.1925vw, 4rem);
+    --space-3xl-4xl: clamp(2.5rem, 1.2676rem + 5.2582vw, 6rem);
 
     /* Dark palette */
     --color-bg: #0c0c0c;
     --color-surface: #1a1a1a;
-    --color-text: #f5f5f4;
-    --color-text-muted: #a8a29e;
+    --color-text: #f5f5f5;
+    --color-text-muted: #a3a3a3;
     --color-accent: #ffffff;
-    --color-accent-soft: #44403c;
-    --color-border: #292524;
-    --color-warm: #1c1c1a;
+    --color-accent-soft: #333333;
+    --color-border: #2a2a2a;
+    --color-warm: #141414;
   }
 
   html { font-size: 100%; -webkit-font-smoothing: antialiased; }
@@ -55,59 +60,73 @@
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background: var(--color-bg);
     color: var(--color-text);
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .container {
-    max-width: 80rem;
+    max-width: 72rem;
     margin: 0 auto;
     padding: 0 var(--space-3xl);
   }
 
   /* ─── Hero ─── */
   .hero {
-    min-height: 85vh;
+    min-height: 75vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     position: relative;
     overflow: hidden;
-    padding: var(--space-8xl) 0 var(--space-6xl);
+    padding: var(--space-4xl) 0 var(--space-3xl);
   }
 
-  .hero__spiral {
+  .hero__decor {
     position: absolute;
     top: 50%;
-    right: -3rem;
+    right: -4rem;
     transform: translateY(-50%);
-    width: 38rem;
-    height: 38rem;
-    opacity: 0.12;
+    width: 32rem;
+    height: 32rem;
     pointer-events: none;
+    opacity: 0.2;
+  }
+
+  .hero__decor polygon,
+  .hero__decor polyline {
+    stroke: var(--color-accent-soft);
+    fill: none;
+  }
+
+  .hero__decor line {
+    stroke: var(--color-accent-soft);
+    stroke-width: 0.5;
+  }
+
+  .hero__decor circle {
+    fill: var(--color-accent-soft);
   }
 
   .hero__label {
     font-size: var(--font-size--1);
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     color: var(--color-text-muted);
     font-weight: 600;
-    margin-bottom: var(--space-3xl);
+    margin-bottom: var(--space-xl);
   }
 
   .hero__title {
-    font-size: var(--font-size-6);
-    font-weight: 700;
-    line-height: 0.95;
-    letter-spacing: -0.04em;
-    max-width: 12ch;
-    margin-bottom: var(--space-3xl);
-    text-wrap: balance;
+    font-size: var(--font-size-5);
+    font-weight: 650;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    max-width: 18ch;
+    margin-bottom: var(--space-2xl);
   }
 
   .hero__title em {
     font-style: normal;
-    background: linear-gradient(135deg, #f5f5f4 0%, #a8a29e 100%);
+    background: linear-gradient(135deg, #f5f5f5 0%, #a3a3a3 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -116,15 +135,15 @@
   .hero__subtitle {
     font-size: var(--font-size-1);
     color: var(--color-text-muted);
-    line-height: 1.6;
-    max-width: 50ch;
+    line-height: 1.55;
+    max-width: 55ch;
   }
 
   .hero__meta {
     display: flex;
-    gap: var(--space-3xl);
-    margin-top: var(--space-4xl);
-    padding-top: var(--space-3xl);
+    gap: var(--space-2xl);
+    margin-top: var(--space-3xl);
+    padding-top: var(--space-2xl);
     border-top: 1px solid var(--color-border);
     font-size: var(--font-size--1);
     color: var(--color-text-muted);
@@ -138,7 +157,7 @@
 
   /* ─── Sections ─── */
   .section {
-    padding: var(--space-7xl) 0 var(--space-8xl);
+    padding: var(--space-4xl) 0;
   }
 
   .section--alt {
@@ -157,12 +176,12 @@
   }
 
   .section__title {
-    font-size: var(--font-size-4);
+    font-size: var(--font-size-3);
     font-weight: 650;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
     margin-bottom: var(--space-xl);
-    max-width: 25ch;
+    max-width: 30ch;
   }
 
   .section__lede {
@@ -170,7 +189,7 @@
     color: var(--color-text-muted);
     line-height: 1.7;
     max-width: 60ch;
-    margin-bottom: var(--space-4xl);
+    margin-bottom: var(--space-3xl);
   }
 
   /* ─── Grid ─── */
@@ -190,7 +209,7 @@
 
   .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
   }
 
   .card--filled {
@@ -210,7 +229,7 @@
     font-weight: 700;
     line-height: 1;
     margin-bottom: var(--space-l);
-    background: linear-gradient(135deg, #f5f5f4 0%, #78716c 100%);
+    background: linear-gradient(135deg, #f5f5f5 0%, #a3a3a3 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -219,7 +238,7 @@
   .card__title {
     font-size: var(--font-size-0);
     font-weight: 600;
-    margin-bottom: var(--space-l);
+    margin-bottom: var(--space-s);
   }
 
   .card__text {
@@ -238,7 +257,7 @@
     background: var(--color-warm);
     border-radius: 1rem;
     border: 1px solid var(--color-accent-soft);
-    margin-bottom: var(--space-4xl);
+    margin-bottom: var(--space-3xl);
   }
 
   .ratio-vis__side {
@@ -249,7 +268,7 @@
     font-size: var(--font-size-5);
     font-weight: 700;
     line-height: 1;
-    background: linear-gradient(135deg, #f5f5f4 0%, #a8a29e 100%);
+    background: linear-gradient(135deg, #f5f5f5 0%, #a3a3a3 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -268,7 +287,7 @@
 
   /* ─── Type showcase ─── */
   .type-showcase {
-    padding: var(--space-7xl) 0;
+    padding: var(--space-4xl) 0;
   }
 
   .type-demo {
@@ -279,8 +298,8 @@
   .type-demo__step {
     display: flex;
     align-items: baseline;
-    gap: var(--space-2xl);
-    padding: var(--space-m) 0;
+    gap: var(--space-xl);
+    padding: var(--space-s) 0;
     border-bottom: 1px solid var(--color-border);
   }
 
@@ -312,8 +331,8 @@
 
   /* ─── WCAG banner ─── */
   .wcag-banner {
-    background: #1c1c1a;
-    border: 1px solid #44403c;
+    background: #141414;
+    border: 1px solid #333;
     border-radius: 0.75rem;
     padding: var(--space-2xl);
     margin-top: var(--space-3xl);
@@ -372,7 +391,7 @@
 
   .space-bar__fill {
     height: 100%;
-    background: linear-gradient(90deg, #44403c, #f5f5f4);
+    background: linear-gradient(90deg, var(--color-accent-soft), var(--color-accent));
     border-radius: 0.25rem;
     transition: width 0.1s;
   }
@@ -386,23 +405,9 @@
     line-height: 1.4;
   }
 
-  /* ─── Full-bleed divider ─── */
-  .divider {
-    padding: var(--space-6xl) 0;
-    text-align: center;
-  }
-
-  .divider__text {
-    font-size: var(--font-size-5);
-    font-weight: 200;
-    letter-spacing: -0.03em;
-    color: var(--color-text-muted);
-    opacity: 0.3;
-  }
-
   /* ─── Tokens panel ─── */
   .tokens-section {
-    padding: var(--space-6xl) 0;
+    padding: var(--space-4xl) 0;
   }
 
   .tokens-panel {
@@ -418,7 +423,6 @@
     font-weight: 600;
     cursor: pointer;
     user-select: none;
-    color: var(--color-text);
   }
 
   .tokens-panel summary:hover {
@@ -431,7 +435,7 @@
     font-size: 0.75rem;
     line-height: 1.7;
     font-family: 'SF Mono', 'Fira Code', monospace;
-    color: #d6d3d1;
+    color: #d4d4d4;
     border-top: 1px solid var(--color-border);
     max-height: 24rem;
     overflow-y: auto;
@@ -439,7 +443,7 @@
 
   /* ─── Footer ─── */
   .footer {
-    padding: var(--space-4xl) 0;
+    padding: var(--space-3xl) 0;
     border-top: 1px solid var(--color-border);
     font-size: var(--font-size--1);
     color: var(--color-text-muted);
@@ -458,10 +462,10 @@
   /* ─── Responsive ─── */
   @media (max-width: 640px) {
     .container { padding: 0 var(--space-xl); }
-    .hero { min-height: 75vh; padding: var(--space-6xl) 0 var(--space-4xl); }
-    .hero__spiral { display: none; }
+    .hero { min-height: 65vh; padding: var(--space-4xl) 0 var(--space-3xl); }
+    .hero__decor { display: none; }
     .hero__meta { flex-direction: column; gap: var(--space-xs); }
-    .type-demo__step { flex-direction: column; gap: var(--space-xs); }
+    .type-demo__step { flex-direction: column; gap: var(--space-2xs); }
     .type-demo__note { text-align: left; max-width: none; }
     .ratio-vis { grid-template-columns: 1fr; text-align: center; }
     .ratio-vis__arrow { transform: rotate(90deg); }
@@ -474,32 +478,29 @@
 <body>
 
 <section class="hero">
-  <svg class="hero__spiral" viewBox="0 0 600 600" fill="none">
-    <path d="M300 300 
-      m-100 0 a100 100 0 1 1 200 0 
-      a120 120 0 1 1 -240 0 
-      a150 150 0 1 1 300 0 
-      a190 190 0 1 1 -380 0 
-      a240 240 0 1 1 480 0" 
-      stroke="#a8a29e" stroke-width="1.5" opacity="0.6"/>
-    <line x1="300" y1="60" x2="300" y2="540" stroke="#a8a29e" stroke-width="0.5" opacity="0.3"/>
-    <line x1="60" y1="300" x2="540" y2="300" stroke="#a8a29e" stroke-width="0.5" opacity="0.3"/>
-    <circle cx="300" cy="300" r="4" fill="#a8a29e" opacity="0.6"/>
+  <svg class="hero__decor" viewBox="0 0 400 400">
+    <polygon points="200,24 364,156 304,352 96,352 36,156"
+      stroke-width="1" opacity="0.35"/>
+    <polyline points="200,24 304,352 36,156 364,156 96,352 200,24"
+      stroke-width="0.6" opacity="0.25"/>
+    <line x1="20" y1="200" x2="380" y2="200" stroke-width="0.4" opacity="0.15"/>
+    <line x1="200" y1="20" x2="200" y2="380" stroke-width="0.4" opacity="0.15"/>
+    <circle cx="200" cy="200" r="3" opacity="0.5"/>
   </svg>
   <div class="container">
     <p class="hero__label">Expressiva · Golden Ratio φ · 1.618</p>
-    <h1 class="hero__title">Exponential<br><em>by&nbsp;nature</em></h1>
+    <h1 class="hero__title">The golden<br><em>proportion</em></h1>
     <p class="hero__subtitle">
       The <strong>golden ratio</strong> (1.618) pushes type to its limits. Each step multiplies
       the previous by φ — creating a curve that ascends from readable body copy
       to monumental, poster-scale headlines.
     </p>
     <div class="hero__meta">
-      <span><strong>Scale</strong> golden-ratio · 1.618 (φ)</span>
+      <span><strong>Scale</strong> golden-ratio · 1.618</span>
       <span><strong>Base</strong> 18 → 24 px</span>
       <span><strong>Viewport</strong> 375–1440 px</span>
       <span><strong>Steps</strong> −1 to 6</span>
-      <span><strong>Step 6</strong> ~27 rem</span>
+      <span><strong>WCAG</strong> ✅ all clear</span>
     </div>
   </div>
 </section>
@@ -547,12 +548,12 @@
         </p>
       </article>
       <article class="card card--filled">
-        <p class="card__icon">18 px</p>
-        <h3 class="card__title">Generous base</h3>
+        <p class="card__icon">✓</p>
+        <h3 class="card__title">WCAG 1.4.4 compliant</h3>
         <p class="card__text">
-          Starting at 18 px instead of 16 px ensures the lower steps stay
-          comfortably readable. The wider foundation makes the exponential
-          climb feel intentional, not chaotic.
+          Despite the dramatic range, the generous base size (18 px minimum)
+          keeps every step within the 200% zoom threshold — even step 6 at
+          26.9 rem passes the accessibility check.
         </p>
       </article>
     </div>
@@ -565,8 +566,9 @@
     <h2 class="section__title">Type scale · Golden ratio (φ = 1.618)</h2>
     <p class="section__lede">
       Eight steps from −1 to 6. Resize your browser — the proportional gaps
-      between steps are enormous at the top end. Step 6 at 26.9 rem is
-      designed for poster-scale hero sections, not for body copy.
+      between steps grow dramatically at the top end. Step 6 at 26.9 rem is
+      designed for poster-scale hero sections, not for body copy. The hierarchy
+      is invariant.
     </p>
     <div class="type-demo">
       <div class="type-demo__step">
@@ -616,52 +618,44 @@
       <div>
         <div class="wcag-banner__title">All steps WCAG 1.4.4 compliant</div>
         <div class="wcag-banner__text">
-          Despite the dramatic range, the generous base size (18 px minimum)
-          keeps every step within the 200% zoom threshold. Even step 6 at
-          26.9 rem passes — though its primary use case is decorative hero
-          text rather than long-form reading.
+          The generous 18 px base keeps the exponential curve within safe limits.
+          Despite reaching 26.9 rem at the top, every step passes the 200% zoom
+          threshold — though step 6 is best reserved for decorative display use.
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider">
-  <div class="container">
-    <p class="divider__text">The exponential curve in full effect</p>
-  </div>
-</div>
-
 <section class="section">
   <div class="container">
     <div class="section__overline">Generous spacing</div>
-    <h2 class="section__title">Space scale · 12 fluid steps up to 15 rem</h2>
+    <h2 class="section__title">Space scale · 8 fluid steps</h2>
     <p class="section__lede">
-      A wide base (12 → 20 px) with aggressive multipliers produces spacing
-      that matches the typographic ambition. The bars below track
-      <code>--space-*</code> tokens in real time — at wide viewports, some
-      exceed the screen width on mobile.
+      A wide base (10 → 16 px) with golden-ratio-inspired multipliers keeps
+      the rhythm generous. The bars below track largest <code>--space-*</code>
+      tokens in real time — resize to feel the spacing breathe.
     </p>
     <div class="space-bars" id="spaceBars">
       <div class="space-bar">
-        <span class="space-bar__label">--space-5xl</span>
-        <div class="space-bar__track"><div class="space-bar__fill" style="width:var(--space-5xl);min-width:4px"></div></div>
-        <span class="space-bar__value" id="val-space-5xl"></span>
+        <span class="space-bar__label">--space-xl</span>
+        <div class="space-bar__track"><div class="space-bar__fill" style="width:var(--space-xl);min-width:4px"></div></div>
+        <span class="space-bar__value" id="val-space-xl"></span>
       </div>
       <div class="space-bar">
-        <span class="space-bar__label">--space-6xl</span>
-        <div class="space-bar__track"><div class="space-bar__fill" style="width:var(--space-6xl);min-width:4px"></div></div>
-        <span class="space-bar__value" id="val-space-6xl"></span>
+        <span class="space-bar__label">--space-2xl</span>
+        <div class="space-bar__track"><div class="space-bar__fill" style="width:var(--space-2xl);min-width:4px"></div></div>
+        <span class="space-bar__value" id="val-space-2xl"></span>
       </div>
       <div class="space-bar">
-        <span class="space-bar__label">--space-7xl</span>
-        <div class="space-bar__track"><div class="space-bar__fill" style="width:var(--space-7xl);min-width:4px"></div></div>
-        <span class="space-bar__value" id="val-space-7xl"></span>
+        <span class="space-bar__label">--space-3xl</span>
+        <div class="space-bar__track"><div class="space-bar__fill" style="width:var(--space-3xl);min-width:4px"></div></div>
+        <span class="space-bar__value" id="val-space-3xl"></span>
       </div>
       <div class="space-bar">
-        <span class="space-bar__label">--space-8xl</span>
-        <div class="space-bar__track"><div class="space-bar__fill" style="width:var(--space-8xl);min-width:4px"></div></div>
-        <span class="space-bar__value" id="val-space-8xl"></span>
+        <span class="space-bar__label">--space-4xl</span>
+        <div class="space-bar__track"><div class="space-bar__fill" style="width:var(--space-4xl);min-width:4px"></div></div>
+        <span class="space-bar__value" id="val-space-4xl"></span>
       </div>
     </div>
   </div>
@@ -673,40 +667,52 @@
     <h2 class="section__title">Generated tokens</h2>
     <details class="tokens-panel">
       <summary>Show all CSS custom properties</summary>
-      <pre><code>:root {
-  /* ─── Type Scale (golden-ratio 1.618) ─── */
-  --font-size--1: clamp(0.6953rem, 0.6137rem + 0.3482vw, 0.9271rem);
-  --font-size-0:  clamp(1.125rem, 0.993rem + 0.5634vw, 1.5rem);
-  --font-size-1:  clamp(1.8203rem, 1.6066rem + 0.9115vw, 2.427rem);
-  --font-size-2:  clamp(2.9452rem, 2.5995rem + 1.4749vw, 3.9269rem);
-  --font-size-3:  clamp(4.7653rem, 4.206rem + 2.3864vw, 6.3537rem);
-  --font-size-4:  clamp(7.7102rem, 6.8053rem + 3.8611vw, 10.2803rem);
-  --font-size-5:  clamp(12.4751rem, 11.0109rem + 6.2473vw, 16.6335rem);
-  --font-size-6:  clamp(20.1848rem, 17.8157rem + 10.1082vw, 26.913rem);
+      <pre><code>  :root {
+    --font-size-6: clamp(20.1848rem, 17.8157rem + 10.1082vw, 26.913rem);
+    --font-size-5: clamp(12.4751rem, 11.0109rem + 6.2473vw, 16.6335rem);
+    --font-size-4: clamp(7.7102rem, 6.8053rem + 3.8611vw, 10.2803rem);
+    --font-size-3: clamp(4.7653rem, 4.206rem + 2.3864vw, 6.3537rem);
+    --font-size-2: clamp(2.9452rem, 2.5995rem + 1.4749vw, 3.9269rem);
+    --font-size-1: clamp(1.8203rem, 1.6066rem + 0.9115vw, 2.427rem);
+    --font-size-0: clamp(1.125rem, 0.993rem + 0.5634vw, 1.5rem);
+    --font-size--1: clamp(0.6953rem, 0.6137rem + 0.3482vw, 0.9271rem);
+    --text-s: clamp(0.6953rem, 0.6137rem + 0.3482vw, 0.9271rem);
+    --text-m: clamp(1.125rem, 0.993rem + 0.5634vw, 1.5rem);
+    --text-l: clamp(1.8203rem, 1.6066rem + 0.9115vw, 2.427rem);
+    --text-xl: clamp(2.9452rem, 2.5995rem + 1.4749vw, 3.9269rem);
+    --text-xxl: clamp(4.7653rem, 4.206rem + 2.3864vw, 6.3537rem);
+    --h6: clamp(0.6953rem, 0.6137rem + 0.3482vw, 0.9271rem);
+    --h5: clamp(1.125rem, 0.993rem + 0.5634vw, 1.5rem);
+    --h4: clamp(1.8203rem, 1.6066rem + 0.9115vw, 2.427rem);
+    --h3: clamp(2.9452rem, 2.5995rem + 1.4749vw, 3.9269rem);
+    --h2: clamp(4.7653rem, 4.206rem + 2.3864vw, 6.3537rem);
+    --h1: clamp(7.7102rem, 6.8053rem + 3.8611vw, 10.2803rem);
+    --space-4xl: clamp(3.75rem, 2.9577rem + 3.3803vw, 6rem);
+    --space-3xl: clamp(2.5rem, 1.9718rem + 2.2535vw, 4rem);
+    --space-2xl: clamp(1.875rem, 1.4789rem + 1.6901vw, 3rem);
+    --space-xl: clamp(1.25rem, 0.9859rem + 1.1268vw, 2rem);
+    --space-l: clamp(0.9375rem, 0.7394rem + 0.8451vw, 1.5rem);
+    --space-m: clamp(0.625rem, 0.493rem + 0.5634vw, 1rem);
+    --space-s: clamp(0.5rem, 0.412rem + 0.3756vw, 0.75rem);
+    --space-xs: clamp(0.3125rem, 0.2465rem + 0.2817vw, 0.5rem);
+    --space-xs-s: clamp(0.3125rem, 0.1585rem + 0.6573vw, 0.75rem);
+    --space-s-m: clamp(0.5rem, 0.3239rem + 0.7512vw, 1rem);
+    --space-m-l: clamp(0.625rem, 0.3169rem + 1.3146vw, 1.5rem);
+    --space-l-xl: clamp(0.9375rem, 0.5634rem + 1.5962vw, 2rem);
+    --space-xl-2xl: clamp(1.25rem, 0.6338rem + 2.6291vw, 3rem);
+    --space-2xl-3xl: clamp(1.875rem, 1.1268rem + 3.1925vw, 4rem);
+    --space-3xl-4xl: clamp(2.5rem, 1.2676rem + 5.2582vw, 6rem);
 
-  /* ─── Space Scale (base: 12→20 px) ─── */
-  --space-xs:   clamp(0.125rem, 0.103rem + 0.0939vw, 0.1875rem);
-  --space-s:    clamp(0.75rem, 0.5739rem + 0.7512vw, 1.25rem);
-  --space-xl:   clamp(0.75rem, 0.5739rem + 0.7512vw, 1.25rem);
-  --space-2xl:  clamp(1.125rem, 0.8609rem + 1.1268vw, 1.875rem);
-  --space-3xl:  clamp(1.5rem, 1.1479rem + 1.5023vw, 2.5rem);
-  --space-4xl:  clamp(2.25rem, 1.7218rem + 2.2535vw, 3.75rem);
-  --space-5xl:  clamp(3rem, 2.2958rem + 3.0047vw, 5rem);
-  --space-6xl:  clamp(4.5rem, 3.4437rem + 4.507vw, 7.5rem);
-  --space-7xl:  clamp(6rem, 4.5915rem + 6.0094vw, 10rem);
-  --space-8xl:  clamp(9rem, 6.8873rem + 9.0141vw, 15rem);
-
-  /* ─── One-Up Pairs ─── */
-  --space-xs-s:     clamp(0.125rem, -0.2711rem + 1.6901vw, 1.25rem);
-  --space-s-xl:     clamp(0.75rem, 0.3539rem + 1.6901vw, 1.875rem);
-  --space-xl-2xl:   clamp(0.75rem, 0.3539rem + 1.6901vw, 1.875rem);
-  --space-2xl-3xl:  clamp(1.125rem, 0.6408rem + 2.0657vw, 2.5rem);
-  --space-3xl-4xl:  clamp(1.5rem, 0.7077rem + 3.3803vw, 3.75rem);
-  --space-4xl-5xl:  clamp(2.25rem, 1.2817rem + 4.1315vw, 5rem);
-  --space-5xl-6xl:  clamp(3rem, 1.4155rem + 6.7606vw, 7.5rem);
-  --space-6xl-7xl:  clamp(4.5rem, 2.5634rem + 8.2629vw, 10rem);
-  --space-7xl-8xl:  clamp(6rem, 2.831rem + 13.5211vw, 15rem);
-}</code></pre>
+    /* Dark palette */
+    --color-bg: #0c0c0c;
+    --color-surface: #1a1a1a;
+    --color-text: #f5f5f5;
+    --color-text-muted: #a3a3a3;
+    --color-accent: #ffffff;
+    --color-accent-soft: #333333;
+    --color-border: #2a2a2a;
+    --color-warm: #141414;
+  }</code></pre>
     </details>
   </div>
 </section>
@@ -718,14 +724,14 @@
       <span>golden-ratio (1.618)</span>
       <span>375–1440 px</span>
       <span>18→24 px base</span>
-      <span>12 space steps</span>
+      <span>8 space steps</span>
     </div>
     <p>Open this page and resize to see fluid interpolation in action.</p>
   </div>
 </footer>
 
 <script>
-  const ids = ['space-5xl', 'space-6xl', 'space-7xl', 'space-8xl'];
+  const ids = ['space-xl', 'space-2xl', 'space-3xl', 'space-4xl'];
   function update() {
     const style = getComputedStyle(document.documentElement);
     for (const id of ids) {

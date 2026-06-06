@@ -17,9 +17,16 @@ Chaque page suit le même standard :
 
 | Page | Scale | Ratio | Base | Steps | Espacement | Theme |
 |------|-------|-------|------|-------|------------|-------|
-| [Moderna](./moderne.html) | perfect-fourth | 1.333 | 16→20 px | −2 à 5 (8) | 10 tokens | Clair, sobre |
-| [Expressiva](./expressif.html) | golden-ratio | 1.618 | 18→24 px | −1 à 6 (8) | 12 tokens | Sombre, dramatique |
-| [Kinetic](./kinetic.html) | minor-third → augmented-fourth | 1.2 → 1.414 | 16→20 px | −2 à 5 (8) | 11 tokens | Terracotta, éditorial |
+| [Moderna](./moderne.html) | perfect-fourth | 1.333 | 16→20 px | −2 à 5 (8) | 8 tokens | Clair, sobre |
+| [Expressiva](./expressif.html) | golden-ratio | 1.618 | 18→24 px | −1 à 6 (8) | 8 tokens | Sombre, dramatique |
+| [Kinetic](./kinetic.html) | minor-third → augmented-fourth | 1.2 → 1.414 | 16→20 px | −2 à 5 (8) | 8 tokens | Terracotta, éditorial |
+
+## Nouveautés v2
+
+Chaque page inclut désormais :
+- **Labels sémantiques** — `--text-*` et `--h1` à `--h6`
+- **Crossover pairs** — transitions fluides entre steps adjacents
+- **Labels d'espacement sémantiques** — `xs`, `s`, `m`, `l`, `xl`, `2xl`, `3xl`, `4xl`
 
 ## Ajouter un exemple
 
