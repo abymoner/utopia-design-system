@@ -1,0 +1,51 @@
+// ═══════════════════════════════════════════════════
+// Utopia Fluid Design System — SCSS Variables
+// ═══════════════════════════════════════════════════
+
+// ─── Type Scale ───
+
+$font-size--2: clamp(0.64rem, 0.45rem + 0.93vw, 1.11rem);
+$font-size--1: clamp(0.80rem, 0.61rem + 0.93vw, 1.33rem);
+$font-size-0:  clamp(1.00rem, 0.83rem + 0.87vw, 1.50rem);
+$font-size-1:  clamp(1.25rem, 1.08rem + 0.84vw, 1.80rem);
+$font-size-2:  clamp(1.56rem, 1.39rem + 0.85vw, 2.17rem);
+$font-size-3:  clamp(1.95rem, 1.78rem + 0.85vw, 2.60rem);
+$font-size-4:  clamp(2.44rem, 2.27rem + 0.84vw, 3.12rem);
+$font-size-5:  clamp(3.05rem, 2.82rem + 1.14vw, 3.75rem);
+
+// ─── Space Scale ───
+
+$space-3xs: clamp(0.19rem, 0.08rem + 0.52vw, 0.50rem);
+$space-2xs: clamp(0.38rem, 0.25rem + 0.61vw, 0.75rem);
+$space-xs:  clamp(0.56rem, 0.42rem + 0.70vw, 1.00rem);
+$space-s:   clamp(0.75rem, 0.58rem + 0.87vw, 1.25rem);
+$space-m:   clamp(1.00rem, 0.83rem + 0.87vw, 1.50rem);
+$space-l:   clamp(1.50rem, 1.25rem + 1.30vw, 2.25rem);
+$space-xl:  clamp(2.00rem, 1.65rem + 1.74vw, 3.00rem);
+$space-2xl: clamp(3.00rem, 2.48rem + 2.61vw, 4.50rem);
+$space-3xl: clamp(4.00rem, 3.31rem + 3.48vw, 6.00rem);
+
+// ─── One-Up Pairs ───
+
+$space-3xs-2xs: clamp(0.19rem, 0.01rem + 0.87vw, 0.75rem);
+$space-2xs-xs:  clamp(0.38rem, 0.17rem + 1.04vw, 1.00rem);
+$space-xs-s:    clamp(0.56rem, 0.33rem + 1.13vw, 1.25rem);
+$space-s-m:     clamp(0.75rem, 0.50rem + 1.22vw, 1.50rem);
+$space-m-l:     clamp(1.00rem, 0.66rem + 1.70vw, 2.00rem);
+$space-l-xl:    clamp(1.50rem, 1.00rem + 2.52vw, 3.00rem);
+$space-xl-2xl:  clamp(2.00rem, 1.33rem + 3.35vw, 4.00rem);
+$space-2xl-3xl: clamp(3.00rem, 2.00rem + 5.02vw, 6.00rem);
+
+// ─── Mixins ───
+
+@mixin fluid-text($step) {
+  font-size: var(--font-size-#{$step});
+}
+
+@mixin fluid-space($property, $size) {
+  #{$property}: var(--space-#{$size});
+}
+
+// Usage:
+// .hero-title { @include fluid-text(5); }
+// .card       { @include fluid-space(padding, m); }

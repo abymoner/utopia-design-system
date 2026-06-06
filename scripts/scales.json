@@ -1,0 +1,74 @@
+{
+  "minor-second": {
+    "value": 1.067,
+    "name": "Minor Second",
+    "description": "Subtle, almost imperceptible. Good for dense information dashboards.",
+    "category": "diatonic"
+  },
+  "major-second": {
+    "value": 1.125,
+    "name": "Major Second",
+    "description": "Very subtle, safe choice for text-heavy interfaces.",
+    "category": "diatonic"
+  },
+  "minor-third": {
+    "value": 1.2,
+    "name": "Minor Third",
+    "description": "Pleasant, harmonious step. Popular for body text systems.",
+    "category": "tertian"
+  },
+  "major-third": {
+    "value": 1.25,
+    "name": "Major Third",
+    "description": "Clear musical interval. Good balance for general UI.",
+    "category": "tertian"
+  },
+  "perfect-fourth": {
+    "value": 1.333,
+    "name": "Perfect Fourth",
+    "description": "Bold, creates clear hierarchy. Very popular in modern web design.",
+    "category": "quartal"
+  },
+  "augmented-fourth": {
+    "value": 1.414,
+    "name": "Augmented Fourth / Tritone",
+    "description": "Dramatic leap, high contrast. Use for editorial or poster-like layouts.",
+    "category": "quartal"
+  },
+  "perfect-fifth": {
+    "value": 1.5,
+    "name": "Perfect Fifth",
+    "description": "Very bold, strong visual hierarchy.",
+    "category": "quintal"
+  },
+  "golden-ratio": {
+    "value": 1.618,
+    "name": "Golden Ratio",
+    "description": "Nature's proportion (φ). Maximum aesthetic contrast.",
+    "category": "special"
+  },
+  "minor-sixth": {
+    "value": 1.6,
+    "name": "Minor Sixth",
+    "description": "Wide expressive range for dramatic typography.",
+    "category": "sixth"
+  },
+  "major-sixth": {
+    "value": 1.667,
+    "name": "Major Sixth",
+    "description": "Very wide spacing, suitable for hero sections.",
+    "category": "sixth"
+  },
+  "octave": {
+    "value": 2.0,
+    "name": "Octave",
+    "description": "Extreme contrast, poster-like or monumental scale.",
+    "category": "special"
+  },
+  "custom": {
+    "value": null,
+    "name": "Custom",
+    "description": "User-defined ratio. Provide a numeric value directly.",
+    "category": "custom"
+  }
+}

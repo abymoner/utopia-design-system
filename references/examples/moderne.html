@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moderna — Moderate Fluid Scale (Perfect Fourth)</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --font-size--2: clamp(0.5628rem, 0.5132rem + 0.2114vw, 0.7035rem);
+    --font-size--1: clamp(0.7502rem, 0.6841rem + 0.2818vw, 0.9377rem);
+    --font-size-0:  clamp(1rem, 0.912rem + 0.3756vw, 1.25rem);
+    --font-size-1:  clamp(1.333rem, 1.2157rem + 0.5007vw, 1.6663rem);
+    --font-size-2:  clamp(1.7769rem, 1.6205rem + 0.6674vw, 2.2211rem);
+    --font-size-3:  clamp(2.3686rem, 2.1601rem + 0.8896vw, 2.9607rem);
+    --font-size-4:  clamp(3.1573rem, 2.8794rem + 1.1859vw, 3.9467rem);
+    --font-size-5:  clamp(4.2087rem, 3.8382rem + 1.5807vw, 5.2609rem);
+    --space-xs:   clamp(0.125rem, 0.103rem + 0.0939vw, 0.1875rem);
+    --space-s:    clamp(0.5rem, 0.412rem + 0.3756vw, 0.75rem);
+    --space-m:    clamp(0.25rem, 0.206rem + 0.1878vw, 0.375rem);
+    --space-l:    clamp(0.5rem, 0.412rem + 0.3756vw, 0.75rem);
+    --space-xl:   clamp(0.75rem, 0.618rem + 0.5634vw, 1.125rem);
+    --space-2xl:  clamp(1rem, 0.8239rem + 0.7512vw, 1.5rem);
+    --space-3xl:  clamp(1.5rem, 1.2359rem + 1.1268vw, 2.25rem);
+    --space-4xl:  clamp(2rem, 1.6479rem + 1.5023vw, 3rem);
+    --space-5xl:  clamp(3rem, 2.4718rem + 2.2535vw, 4.5rem);
+    --space-6xl:  clamp(4rem, 3.2958rem + 3.0047vw, 6rem);
+    --space-xs-s:    clamp(0.125rem, -0.0951rem + 0.939vw, 0.75rem);
+    --space-s-l:     clamp(0.5rem, 0.2799rem + 0.939vw, 1.125rem);
+    --space-l-xl:    clamp(0.5rem, 0.2799rem + 0.939vw, 1.125rem);
+    --space-xl-2xl:  clamp(0.75rem, 0.4859rem + 1.1268vw, 1.5rem);
+    --space-2xl-3xl: clamp(1rem, 0.5599rem + 1.8779vw, 2.25rem);
+    --space-3xl-4xl: clamp(1.5rem, 0.9718rem + 2.2535vw, 3rem);
+    --space-4xl-5xl: clamp(2rem, 1.1197rem + 3.7559vw, 4.5rem);
+    --space-5xl-6xl: clamp(3rem, 1.9437rem + 4.507vw, 6rem);
+
+    /* Neutral palette */
+    --color-bg: #fafaf9;
+    --color-surface: #ffffff;
+    --color-text: #1c1917;
+    --color-text-muted: #78716c;
+    --color-accent: #292524;
+    --color-accent-soft: #d6d3d1;
+    --color-border: #e7e5e4;
+    --color-warm: #f5f5f4;
+  }
+
+  html { font-size: 100%; -webkit-font-smoothing: antialiased; }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 var(--space-3xl);
+  }
+
+  /* ─── Hero ─── */
+  .hero {
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: var(--space-6xl) 0 var(--space-5xl);
+  }
+
+  .hero__decor {
+    position: absolute;
+    top: 50%;
+    right: -6rem;
+    transform: translateY(-50%);
+    width: 30rem;
+    height: 30rem;
+    pointer-events: none;
+    opacity: 0.25;
+  }
+
+  .hero__decor circle {
+    fill: none;
+    stroke: var(--color-accent-soft);
+    stroke-width: 1;
+  }
+
+  .hero__decor line {
+    stroke: var(--color-accent-soft);
+    stroke-width: 0.5;
+  }
+
+  .hero__label {
+    font-size: var(--font-size--1);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-text-muted);
+    font-weight: 600;
+    margin-bottom: var(--space-xl);
+  }
+
+  .hero__title {
+    font-size: var(--font-size-5);
+    font-weight: 650;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    max-width: 18ch;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .hero__subtitle {
+    font-size: var(--font-size-1);
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    max-width: 55ch;
+  }
+
+  .hero__meta {
+    display: flex;
+    gap: var(--space-2xl);
+    margin-top: var(--space-3xl);
+    padding-top: var(--space-2xl);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--font-size--1);
+    color: var(--color-text-muted);
+    flex-wrap: wrap;
+  }
+
+  .hero__meta strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  /* ─── Sections ─── */
+  .section {
+    padding: var(--space-6xl) 0;
+  }
+
+  .section--alt {
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .section__overline {
+    font-size: var(--font-size--1);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-muted);
+    font-weight: 600;
+    margin-bottom: var(--space-s);
+  }
+
+  .section__title {
+    font-size: var(--font-size-3);
+    font-weight: 650;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin-bottom: var(--space-xl);
+    max-width: 30ch;
+  }
+
+  .section__lede {
+    font-size: var(--font-size-1);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    max-width: 60ch;
+    margin-bottom: var(--space-4xl);
+  }
+
+  /* ─── Grid ─── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+    gap: var(--space-3xl);
+  }
+
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: var(--space-3xl);
+  }
+
+  .card--filled {
+    background: var(--color-warm);
+    border-color: var(--color-accent-soft);
+  }
+
+  .card__icon {
+    font-size: var(--font-size-4);
+    line-height: 1;
+    margin-bottom: var(--space-l);
+    color: var(--color-accent);
+  }
+
+  .card__number {
+    font-size: var(--font-size-2);
+    font-weight: 700;
+    margin-bottom: var(--space-s);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .card__title {
+    font-size: var(--font-size-0);
+    font-weight: 600;
+    margin-bottom: var(--space-s);
+  }
+
+  .card__text {
+    font-size: var(--font-size--1);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+
+  /* ─── Ratio explainer ─── */
+  .ratio-vis {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: var(--space-3xl);
+    align-items: center;
+    padding: var(--space-3xl);
+    background: var(--color-warm);
+    border-radius: 1rem;
+    border: 1px solid var(--color-accent-soft);
+    margin-bottom: var(--space-4xl);
+  }
+
+  .ratio-vis__side {
+    text-align: center;
+  }
+
+  .ratio-vis__value {
+    font-size: var(--font-size-5);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-accent);
+    margin-bottom: var(--space-s);
+  }
+
+  .ratio-vis__label {
+    font-size: var(--font-size--1);
+    color: var(--color-text-muted);
+  }
+
+  .ratio-vis__arrow {
+    font-size: var(--font-size-3);
+    color: var(--color-text-muted);
+  }
+
+  /* ─── Type showcase ─── */
+  .type-showcase {
+    padding: var(--space-6xl) 0;
+  }
+
+  .type-demo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .type-demo__step {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-xl);
+    padding: var(--space-s) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .type-demo__label {
+    font-size: var(--font-size--2);
+    color: var(--color-text-muted);
+    min-width: 5rem;
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+  }
+
+  .type-demo__note {
+    font-size: 0.6rem;
+    color: var(--color-text-muted);
+    margin-left: auto;
+    text-align: right;
+    max-width: 16rem;
+    flex-shrink: 0;
+  }
+
+  .demo--2 { font-size: var(--font-size--2); }
+  .demo--1 { font-size: var(--font-size--1); }
+  .demo-0  { font-size: var(--font-size-0); }
+  .demo-1  { font-size: var(--font-size-1); }
+  .demo-2  { font-size: var(--font-size-2); }
+  .demo-3  { font-size: var(--font-size-3); }
+  .demo-4  { font-size: var(--font-size-4); }
+  .demo-5  { font-size: var(--font-size-5); }
+
+  /* ─── WCAG banner ─── */
+  .wcag-banner {
+    background: #f0faf0;
+    border: 1px solid #bbd7bb;
+    border-radius: 0.75rem;
+    padding: var(--space-2xl);
+    margin-top: var(--space-3xl);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-xl);
+  }
+
+  .wcag-banner__icon {
+    font-size: var(--font-size-2);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .wcag-banner__title {
+    font-size: var(--font-size-0);
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+  }
+
+  .wcag-banner__text {
+    font-size: var(--font-size--1);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  /* ─── Space bars ─── */
+  .space-bars {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .space-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-l);
+  }
+
+  .space-bar__label {
+    font-size: var(--font-size--1);
+    color: var(--color-text-muted);
+    min-width: 6rem;
+    flex-shrink: 0;
+  }
+
+  .space-bar__track {
+    flex: 1;
+    height: 2.5rem;
+    background: var(--color-warm);
+    border: 1px solid var(--color-accent-soft);
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .space-bar__fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-accent-soft), var(--color-accent));
+    border-radius: 0.25rem;
+    transition: width 0.1s;
+  }
+
+  .space-bar__value {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.65rem;
+    color: var(--color-text-muted);
+    min-width: 18rem;
+    text-align: right;
+    line-height: 1.4;
+  }
+
+  /* ─── Tokens panel ─── */
+  .tokens-section {
+    padding: var(--space-6xl) 0;
+  }
+
+  .tokens-panel {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  .tokens-panel summary {
+    padding: var(--space-l) var(--space-xl);
+    font-size: var(--font-size-0);
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .tokens-panel summary:hover {
+    background: var(--color-warm);
+  }
+
+  .tokens-panel pre {
+    padding: var(--space-xl);
+    overflow-x: auto;
+    font-size: 0.75rem;
+    line-height: 1.7;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    color: var(--color-text);
+    border-top: 1px solid var(--color-border);
+    max-height: 24rem;
+    overflow-y: auto;
+  }
+
+  /* ─── Footer ─── */
+  .footer {
+    padding: var(--space-4xl) 0;
+    border-top: 1px solid var(--color-border);
+    font-size: var(--font-size--1);
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+  .footer__config {
+    display: flex;
+    gap: var(--space-l);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-s);
+    font-size: var(--font-size--2);
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 640px) {
+    .container { padding: 0 var(--space-xl); }
+    .hero { min-height: 65vh; padding: var(--space-5xl) 0 var(--space-4xl); }
+    .hero__decor { display: none; }
+    .hero__meta { flex-direction: column; gap: var(--space-xs); }
+    .type-demo__step { flex-direction: column; gap: var(--space-2xs); }
+    .type-demo__note { text-align: left; max-width: none; }
+    .ratio-vis { grid-template-columns: 1fr; text-align: center; }
+    .ratio-vis__arrow { transform: rotate(90deg); }
+    .space-bar { flex-direction: column; align-items: stretch; gap: var(--space-xs); }
+    .space-bar__value { text-align: left; min-width: auto; }
+    .wcag-banner { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <svg class="hero__decor" viewBox="0 0 400 400">
+    <circle cx="200" cy="200" r="180"/>
+    <circle cx="200" cy="200" r="140"/>
+    <circle cx="200" cy="200" r="100"/>
+    <circle cx="200" cy="200" r="60"/>
+    <circle cx="200" cy="200" r="20"/>
+    <line x1="20" y1="200" x2="380" y2="200"/>
+    <line x1="200" y1="20" x2="200" y2="380"/>
+  </svg>
+  <div class="container">
+    <p class="hero__label">Moderna · Perfect Fourth · 1.333</p>
+    <h1 class="hero__title">Moderate by&nbsp;design</h1>
+    <p class="hero__subtitle">
+      A restrained fluid scale using the <strong>perfect fourth</strong> (1.333) ratio.
+      Harmonic progression from body to headline — no unnecessary drama, just clear hierarchy.
+    </p>
+    <div class="hero__meta">
+      <span><strong>Scale</strong> perfect-fourth · 1.333</span>
+      <span><strong>Base</strong> 16 → 20 px</span>
+      <span><strong>Viewport</strong> 375–1440 px</span>
+      <span><strong>Steps</strong> −2 to 5</span>
+      <span><strong>WCAG</strong> ✅ all clear</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__overline">Why 4:3?</div>
+    <h2 class="section__title">The most consonant interval</h2>
+    <p class="section__lede">
+      The perfect fourth (4:3 ratio) is one of the most fundamental intervals
+      in music — found in the first notes of <em>Here Comes the Bride</em> and
+      the overtone series of every sound. Applied to type, it creates hierarchy
+      that feels inevitable, never forced.
+    </p>
+
+    <div class="ratio-vis">
+      <div class="ratio-vis__side">
+        <div class="ratio-vis__value">1.333</div>
+        <div class="ratio-vis__label">Fixed ratio at all viewports</div>
+      </div>
+      <div class="ratio-vis__arrow">=</div>
+      <div class="ratio-vis__side">
+        <div class="ratio-vis__value">4:3</div>
+        <div class="ratio-vis__label">The perfect fourth</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <article class="card card--filled">
+        <p class="card__icon">▔</p>
+        <h3 class="card__title">Flat ratio, consistent feel</h3>
+        <p class="card__text">
+          Unlike dynamic ratios, a fixed 1.333 means the proportional
+          relationship between heading and body is identical at every viewport.
+          What looks like a headline on mobile feels like a headline on desktop.
+        </p>
+      </article>
+      <article class="card card--filled">
+        <p class="card__icon">5.3×</p>
+        <h3 class="card__title">Step 5 at max viewport</h3>
+        <p class="card__text">
+          The largest step reaches 5.26 rem at 1440 px — big enough to command
+          a hero section without overwhelming the layout. Right in the sweet
+          spot for editorial design.
+        </p>
+      </article>
+      <article class="card card--filled">
+        <p class="card__icon">✓</p>
+        <h3 class="card__title">WCAG 1.4.4 compliant</h3>
+        <p class="card__text">
+          Every step passes the 200% zoom check across the full viewport range.
+          Perfect fourth is one of the safest ratios for accessible typography.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__overline">The full spectrum</div>
+    <h2 class="section__title">Type scale · Perfect fourth</h2>
+    <p class="section__lede">
+      Eight steps from −2 to 5. Resize your browser — each step interpolates
+      fluidly while maintaining the exact same proportional distance from its
+      neighbours. The hierarchy is invariant.
+    </p>
+    <div class="type-demo">
+      <div class="type-demo__step">
+        <span class="type-demo__label">Step 5</span>
+        <span class="demo-5">The quick brown fox</span>
+        <span class="type-demo__note">4.21 → 5.26 rem</span>
+      </div>
+      <div class="type-demo__step">
+        <span class="type-demo__label">Step 4</span>
+        <span class="demo-4">The quick brown fox</span>
+        <span class="type-demo__note">3.16 → 3.95 rem</span>
+      </div>
+      <div class="type-demo__step">
+        <span class="type-demo__label">Step 3</span>
+        <span class="demo-3">The quick brown fox</span>
+        <span class="type-demo__note">2.37 → 2.96 rem</span>
+      </div>
+      <div class="type-demo__step">
+        <span class="type-demo__label">Step 2</span>
+        <span class="demo-2">The quick brown fox</span>
+        <span class="type-demo__note">1.78 → 2.22 rem</span>
+      </div>
+      <div class="type-demo__step">
+        <span class="type-demo__label">Step 1</span>
+        <span class="demo-1">The quick brown fox</span>
+        <span class="type-demo__note">1.33 → 1.67 rem</span>
+      </div>
+      <div class="type-demo__step">
+        <span class="type-demo__label">Step 0</span>
+        <span class="demo-0">The quick brown fox</span>
+        <span class="type-demo__note">1.00 → 1.25 rem · base</span>
+      </div>
+      <div class="type-demo__step">
+        <span class="type-demo__label">Step −1</span>
+        <span class="demo--1">The quick brown fox</span>
+        <span class="type-demo__note">0.75 → 0.94 rem</span>
+      </div>
+      <div class="type-demo__step">
+        <span class="type-demo__label">Step −2</span>
+        <span class="demo--2">The quick brown fox</span>
+        <span class="type-demo__note">0.56 → 0.70 rem</span>
+      </div>
+    </div>
+
+    <div class="wcag-banner">
+      <div class="wcag-banner__icon">✅</div>
+      <div>
+        <div class="wcag-banner__title">All steps WCAG 1.4.4 compliant</div>
+        <div class="wcag-banner__text">
+          The perfect fourth produces smooth, gradual curves that never violate
+          the 200% zoom threshold. This makes it an excellent choice for
+          content-heavy applications where accessibility is a hard requirement.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__overline">Restrained spacing</div>
+    <h2 class="section__title">Space scale · 10 fluid steps</h2>
+    <p class="section__lede">
+      A tight base (8 → 12 px) with moderate multipliers keeps the overall
+      rhythm compact. The bars below track <code>--space-*</code> tokens in
+      real time — resize to feel the spacing breathe.
+    </p>
+    <div class="space-bars" id="spaceBars">
+      <div class="space-bar">
+        <span class="space-bar__label">--space-3xl</span>
+        <div class="space-bar__track"><div class="space-bar__fill" style="width:var(--space-3xl);min-width:4px"></div></div>
+        <span class="space-bar__value" id="val-space-3xl"></span>
+      </div>
+      <div class="space-bar">
+        <span class="space-bar__label">--space-4xl</span>
+        <div class="space-bar__track"><div class="space-bar__fill" style="width:var(--space-4xl);min-width:4px"></div></div>
+        <span class="space-bar__value" id="val-space-4xl"></span>
+      </div>
+      <div class="space-bar">
+        <span class="space-bar__label">--space-5xl</span>
+        <div class="space-bar__track"><div class="space-bar__fill" style="width:var(--space-5xl);min-width:4px"></div></div>
+        <span class="space-bar__value" id="val-space-5xl"></span>
+      </div>
+      <div class="space-bar">
+        <span class="space-bar__label">--space-6xl</span>
+        <div class="space-bar__track"><div class="space-bar__fill" style="width:var(--space-6xl);min-width:4px"></div></div>
+        <span class="space-bar__value" id="val-space-6xl"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt tokens-section">
+  <div class="container">
+    <div class="section__overline">Under the hood</div>
+    <h2 class="section__title">Generated tokens</h2>
+    <details class="tokens-panel">
+      <summary>Show all CSS custom properties</summary>
+      <pre><code>:root {
+  /* ─── Type Scale (perfect-fourth 1.333) ─── */
+  --font-size--2: clamp(0.5628rem, 0.5132rem + 0.2114vw, 0.7035rem);
+  --font-size--1: clamp(0.7502rem, 0.6841rem + 0.2818vw, 0.9377rem);
+  --font-size-0:  clamp(1rem, 0.912rem + 0.3756vw, 1.25rem);
+  --font-size-1:  clamp(1.333rem, 1.2157rem + 0.5007vw, 1.6663rem);
+  --font-size-2:  clamp(1.7769rem, 1.6205rem + 0.6674vw, 2.2211rem);
+  --font-size-3:  clamp(2.3686rem, 2.1601rem + 0.8896vw, 2.9607rem);
+  --font-size-4:  clamp(3.1573rem, 2.8794rem + 1.1859vw, 3.9467rem);
+  --font-size-5:  clamp(4.2087rem, 3.8382rem + 1.5807vw, 5.2609rem);
+
+  /* ─── Space Scale (base: 8→12 px) ─── */
+  --space-xs:   clamp(0.125rem, 0.103rem + 0.0939vw, 0.1875rem);
+  --space-s:    clamp(0.5rem, 0.412rem + 0.3756vw, 0.75rem);
+  --space-xl:   clamp(0.75rem, 0.618rem + 0.5634vw, 1.125rem);
+  --space-2xl:  clamp(1rem, 0.8239rem + 0.7512vw, 1.5rem);
+  --space-3xl:  clamp(1.5rem, 1.2359rem + 1.1268vw, 2.25rem);
+  --space-4xl:  clamp(2rem, 1.6479rem + 1.5023vw, 3rem);
+  --space-5xl:  clamp(3rem, 2.4718rem + 2.2535vw, 4.5rem);
+  --space-6xl:  clamp(4rem, 3.2958rem + 3.0047vw, 6rem);
+
+  /* ─── One-Up Pairs ─── */
+  --space-xs-s:     clamp(0.125rem, -0.0951rem + 0.939vw, 0.75rem);
+  --space-s-xl:     clamp(0.5rem, 0.2799rem + 0.939vw, 1.125rem);
+  --space-xl-2xl:   clamp(0.75rem, 0.4859rem + 1.1268vw, 1.5rem);
+  --space-2xl-3xl:  clamp(1rem, 0.5599rem + 1.8779vw, 2.25rem);
+  --space-3xl-4xl:  clamp(1.5rem, 0.9718rem + 2.2535vw, 3rem);
+  --space-4xl-5xl:  clamp(2rem, 1.1197rem + 3.7559vw, 4.5rem);
+  --space-5xl-6xl:  clamp(3rem, 1.9437rem + 4.507vw, 6rem);
+}</code></pre>
+    </details>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__config">
+      <span>utopia-design-system</span>
+      <span>perfect-fourth (1.333)</span>
+      <span>375–1440 px</span>
+      <span>16→20 px base</span>
+      <span>10 space steps</span>
+    </div>
+    <p>Open this page and resize to see fluid interpolation in action.</p>
+  </div>
+</footer>
+
+<script>
+  const ids = ['space-3xl', 'space-4xl', 'space-5xl', 'space-6xl'];
+  function update() {
+    const style = getComputedStyle(document.documentElement);
+    for (const id of ids) {
+      const el = document.getElementById('val-' + id);
+      if (el) el.textContent = style.getPropertyValue('--' + id).trim();
+    }
+  }
+  update();
+  let ticking;
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(ticking);
+    ticking = requestAnimationFrame(update);
+  });
+</script>
+</body>
+</html>
